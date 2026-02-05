@@ -1,16 +1,19 @@
-# Project Name
+# Mjakazi Connect
 
-Short, clear description of what this project is and what problem it solves.  
-Keep this to one or two sentences.
+A subscription-based caregiver discovery platform connecting families with domestic
+caregivers through curated profiles, controlled access, and administrative oversight.
 
 ---
 
 ## Overview
 
-This project is intended to serve as a foundation for building and iterating on a digital product.  
-It includes a basic structure, placeholder content, and minimal assumptions so it can be adapted to different use cases.
+Mjakazi Connect operates as a controlled, trustworthy environment for matching families
+with qualified domestic caregivers. The platform balances public visibility of caregiver
+profiles with subscription-gated contact information, ensuring quality through active
+administrative moderation.
 
-The focus is on clarity, maintainability, and gradual enhancement.
+Built on Next.js with TypeScript, the platform prioritizes reliability, structured user
+experiences, and trust over experimentation.
 
 ---
 
@@ -18,17 +21,24 @@ The focus is on clarity, maintainability, and gradual enhancement.
 
 The goals of this project are to:
 
-- Provide a starting point for development
-- Establish a clear structure early
-- Allow fast iteration without overcommitment to design or features
+- Enable families to discover and evaluate caregivers efficiently
+- Provide caregivers with professional visibility and job opportunities
+- Maintain platform quality through active moderation and controlled access
+- Generate sustainable revenue through subscription-based contact unlocking and job
+  postings
 
 ---
 
 ## Features
 
-- Core layout and structure
-- Placeholder content for rapid prototyping
-- Easily extensible foundation
+- **Curated Caregiver Directory**: Browse profiles with skills, experience, and
+  availability
+- **Subscription-Based Access**: Unlock contact details through paid subscriptions
+- **Job Posting Capabilities**: Families can post positions directly to caregivers
+- **Administrative Moderation**: Quality control through profile approval and oversight
+- **Role-Based Access Control**: Distinct experiences for families, caregivers, and
+  administrators
+- **Secure Authentication**: Clerk-based user management with role enforcement
 
 Add or remove features as the project evolves.
 
@@ -37,32 +47,37 @@ Add or remove features as the project evolves.
 ## Getting Started
 
 1. Clone the repository
-2. Open the project in your editor
-3. Start modifying content and structure as needed
+2. Install dependencies: `npm install`
+3. Configure environment variables (see `.env.example`)
+4. Set up MongoDB and Postgres connections
+5. Run development server: `npm run dev`
+6. Access the application at `http://localhost:3000`
 
-No special setup is required unless stated otherwise.
+Refer to deployment documentation for production setup on Contabo VPS infrastructure.
 
 ---
 
 ## Usage
 
-This project can be used as:
+This platform serves:
 
-- A mockup or prototype
-- A starting point for a production build
-- A reference structure for similar projects
+- **Families**: Search caregivers, unlock contacts, post job opportunities
+- **Caregivers**: Create profiles, showcase skills, receive job notifications
+- **Administrators**: Moderate profiles, manage subscriptions, oversee platform quality
 
 ---
 
 ## Customization
 
-You are expected to:
+Core areas for configuration:
 
-- Replace placeholder text
-- Adjust layout and styles
-- Add project-specific functionality
+- Subscription pricing models (PayPal/Stripe integration)
+- Caregiver profile fields and validation rules
+- Search and filtering logic
+- Email templates (Resend integration)
+- Role permissions and access tiers
 
-This template is intentionally minimal to avoid early constraints.
+This platform prioritizes controlled functionality over open-ended customization.
 
 ---
 
@@ -70,27 +85,30 @@ This template is intentionally minimal to avoid early constraints.
 
 If this project accepts contributions:
 
-- Keep changes small and focused
-- Maintain clarity and consistency
-- Avoid introducing unnecessary complexity
+- Maintain the SaaS/Tech positioning and trust-focused UX
+- Keep changes aligned with controlled marketplace principles
+- Test thoroughly against role-based access requirements
+- Document any changes to subscription or moderation logic
 
-Add contribution guidelines here if needed.
+All contributions must preserve platform integrity and administrative control.
 
 ---
 
 ## License
 
-Specify the license for this project here.
-
-Examples:
-
-- MIT
-- Apache 2.0
-- Proprietary / All rights reserved
+Proprietary / All rights reserved
 
 ---
 
 ## Notes
 
-This repository is a starting point, not a finished product.  
-Expect structure and scope to evolve as requirements become clearer.
+This platform operates as a web application with active system-level enforcement, not a
+static directory. Success is measured by paying families unlocking contacts and posting
+jobs, not by profile volume or casual browsing.
+
+The architecture reflects a hybrid approach: MongoDB for CMS content, Postgres with
+pgVector for advanced search, Clerk for authentication, and Docker-based deployment on
+self-hosted infrastructure.
+
+Expect gradual feature enhancement focused on trust, clarity, and measurable value
+creation.
