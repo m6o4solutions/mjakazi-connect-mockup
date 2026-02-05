@@ -1,16 +1,16 @@
 services:
-  mockup-template:
-    image: ghcr.io/m6o4solutions/mockup-template:latest
-    container_name: mockup-template
+  mjakazi-connect-mockup:
+    image: ghcr.io/m6o4solutions/mjakazi-connect-mockup:latest
+    container_name: mjakazi-connect-mockup
     restart: unless-stopped
     networks:
       - traefik-network
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.mockup-template.rule=Host(`mockup-template.m6o4solutions.com`)"
-      - "traefik.http.routers.mockup-template.entrypoints=websecure"
-      - "traefik.http.routers.mockup-template.tls.certresolver=letsencrypt"
-      - "traefik.http.services.mockup-template.loadbalancer.server.port=80"
+      - "traefik.http.routers.mjakazi-connect-mockup.rule=Host(`mockup.mjakaziconnect.co.ke`)"
+      - "traefik.http.routers.mjakazi-connect-mockup.entrypoints=websecure"
+      - "traefik.http.routers.mjakazi-connect-mockup.tls.certresolver=letsencrypt"
+      - "traefik.http.services.mjakazi-connect-mockup.loadbalancer.server.port=80"
 
 networks:
   traefik-network:

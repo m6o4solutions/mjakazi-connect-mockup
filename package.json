@@ -1,6 +1,6 @@
 {
-	"name": "mockup-template",
-	"description": "This template system accelerates mockups for landing pages, websites, and web apps.",
+	"name": "mjakazi-connect-mockup",
+	"description": "Mockup for Mjakazi Connect web app.",
 	"private": true,
 	"version": "1.0.0",
 	"type": "module",
