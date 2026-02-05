@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@theme {
+	/* ===== color system ===== */
+	/* off-white backgrounds - no pure white */
+	--color-canvas: #f8fafc;
+	--color-surface: #f1f5f9;
+	--color-muted: #e2e8f0;
+
+	/* off-black & grays - cool slate tones */
+	--color-ink: #0f172a;
+	--color-ink-muted: #1e293b;
+	--color-text: #334155;
+	--color-text-light: #64748b;
+	--color-border: #cbd5e1;
+
+	/* primary - cyan accent for tech vibrancy */
+	--color-primary: #06b6d4;
+	--color-primary-dark: #0891b2;
+	--color-primary-light: #22d3ee;
+	--color-primary-muted: #cffafe;
+
+	/* semantic colors */
+	--color-success: #10b981;
+	--color-warning: #f59e0b;
+	--color-error: #ef4444;
+	--color-info: #3b82f6;
+
+	/* dark mode palette */
+	--color-dark-bg: #0c0c0c;
+	--color-dark-surface: #171717;
+	--color-dark-border: #262626;
+	--color-dark-text: #e5e5e5;
+	--color-dark-text-muted: #a3a3a3;
+
+	/* ===== zinc palette (for existing layout compatibility) ===== */
+	--color-zinc-50: #f8fafc;
+	--color-zinc-100: #f1f5f9;
+	--color-zinc-200: #e2e8f0;
+	--color-zinc-300: #cbd5e1;
+	--color-zinc-400: #94a3b8;
+	--color-zinc-500: #64748b;
+	--color-zinc-600: #475569;
+	--color-zinc-700: #334155;
+	--color-zinc-800: #1e293b;
+	--color-zinc-900: #0f172a;
+	--color-zinc-950: #0f172a;
+
+	/* white and black */
+	--color-white: #fefefe;
+	--color-black: #0f172a;
+
+	/* ===== spacing scale (8px base grid) ===== */
+	--spacing-xs: 0.5rem; /* 8px */
+	--spacing-sm: 0.75rem; /* 12px */
+	--spacing-md: 1rem; /* 16px */
+	--spacing-lg: 1.5rem; /* 24px */
+	--spacing-xl: 2rem; /* 32px */
+	--spacing-2xl: 3rem; /* 48px */
+	--spacing-3xl: 4rem; /* 64px */
+	--spacing-4xl: 6rem; /* 96px */
+	--spacing-5xl: 8rem; /* 128px */
+
+	/* ===== typography scale ===== */
+	--font-family-base: "Space Grotesk", system-ui, sans-serif;
+	--font-family-mono: "JetBrains Mono", "Fira Code", monospace;
+
+	--font-size-xs: 0.75rem; /* 12px */
+	--font-size-sm: 0.875rem; /* 14px */
+	--font-size-base: 1rem; /* 16px */
+	--font-size-lg: 1.125rem; /* 18px */
+	--font-size-xl: 1.25rem; /* 20px */
+	--font-size-2xl: 1.5rem; /* 24px */
+	--font-size-3xl: 2rem; /* 32px */
+	--font-size-4xl: 2.5rem; /* 40px */
+	--font-size-5xl: 3.5rem; /* 56px */
+	--font-size-6xl: 4.5rem; /* 72px */
+
+	--font-weight-normal: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+
+	--line-height-tight: 1.2;
+	--line-height-normal: 1.5;
+	--line-height-relaxed: 1.75;
+
+	/* ===== shadows ===== */
+	--shadow-sm: 0 1px 2px 0 rgb(15 23 42 / 0.05);
+	--shadow-md: 0 4px 6px -1px rgb(15 23 42 / 0.08), 0 2px 4px -2px rgb(15 23 42 / 0.05);
+	--shadow-lg: 0 10px 15px -3px rgb(15 23 42 / 0.1), 0 4px 6px -4px rgb(15 23 42 / 0.05);
+	--shadow-xl: 0 20px 25px -5px rgb(15 23 42 / 0.1), 0 8px 10px -6px rgb(15 23 42 / 0.05);
+
+	/* ===== borders ===== */
+	--radius-sm: 0.375rem; /* 6px */
+	--radius-md: 0.5rem; /* 8px */
+	--radius-lg: 0.75rem; /* 12px */
+	--radius-xl: 1rem; /* 16px */
+	--radius-full: 9999px;
+
+	--border-width: 1px;
+	--border-width-thick: 2px;
+
+	/* ===== motion ===== */
+	--transition-fast: 150ms ease;
+	--transition-base: 200ms ease;
+	--transition-slow: 300ms ease;
+	--transition-slower: 500ms ease;
+}
+
+/* ===== base styles ===== */
+html {
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	text-rendering: optimizeLegibility;
+}
+
+body {
+	font-family: var(--font-family-base);
+}
+
+/* ===== accessibility ===== */
+:focus-visible {
+	outline: 2px solid var(--color-primary);
+	outline-offset: 2px;
+}
+
+/* ===== utility classes ===== */
+.text-balance {
+	text-wrap: balance;
+}
+
+.text-pretty {
+	text-wrap: pretty;
+}
+
+/* smooth scroll */
+@media (prefers-reduced-motion: no-preference) {
+	html {
+		scroll-behavior: smooth;
+	}
+}
+
+/* respect user motion preferences */
+@media (prefers-reduced-motion: reduce) {
+	*,
+	*::before,
+	*::after {
+		animation-duration: 0.01ms !important;
+		animation-iteration-count: 1 !important;
+		transition-duration: 0.01ms !important;
+	}
+}
