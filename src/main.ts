@@ -14,43 +14,9 @@ function renderApp() {
 	if (!app) return;
 
 	app.innerHTML = `
-        <div class="min-h-dvh bg-zinc-50 text-zinc-950">
-            ${headerHtml}
-            ${heroHtml}
-            <main class="mx-auto max-w-6xl px-4 py-12 sm:px-5 sm:py-16">
-
-                <section id="overview" class="mt-6 sm:mt-12 scroll-mt-20">
-                    <h2 class="text-2xl font-semibold tracking-tight">Overview</h2>
-                    <p class="mt-3 max-w-prose text-zinc-700">
-                        The header and footer are authored as standalone HTML files and injected into
-                        <code class="rounded bg-zinc-950/5 px-1.5 py-0.5">#app</code> from
-                        TypeScript.
-                    </p>
-                </section>
-
-				<section id="features" class="mt-12 scroll-mt-24 sm:mt-16">
-					<h2 class="text-xl font-semibold tracking-tight sm:text-2xl">Features</h2>
-					<div class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-						<div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
-							<p class="text-sm font-semibold">Component HTML</p>
-							<p class="mt-2 text-sm text-zinc-700 leading-relaxed">Keep reusable chunks in src/components.</p>
-						</div>
-						<div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm">
-							<p class="text-sm font-semibold">Tailwind-ready</p>
-							<p class="mt-2 text-sm text-zinc-700 leading-relaxed">Tailwind is already wired via Vite.</p>
-						</div>
-						<div class="rounded-2xl border border-zinc-200 bg-white p-5 shadow-sm sm:col-span-2 lg:col-span-1">
-							<p class="text-sm font-semibold">Accessible defaults</p>
-							<p class="mt-2 text-sm text-zinc-700 leading-relaxed">Focus styles and semantics included.</p>
-						</div>
-					</div>
-				</section>
-
-				<section id="contact" class="mt-12 scroll-mt-24 sm:mt-16">
-					<h2 class="text-xl font-semibold tracking-tight sm:text-2xl">Contact</h2>
-					<p class="mt-3 text-zinc-700 leading-relaxed">Replace this with your real CTA.</p>
-				</section>
-			</main>
+      <div class="min-h-dvh bg-zinc-50 text-zinc-950">
+         ${headerHtml}
+         ${heroHtml}            
 			${footerHtml}
 		</div>
 	`;
