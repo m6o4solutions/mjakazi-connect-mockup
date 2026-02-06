@@ -1,0 +1,1598 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Mjakazi Connect - Professional Caregivers</title>
+
+		<!-- Fonts -->
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap"
+			rel="stylesheet"
+		/>
+
+		<!-- Tailwind CSS -->
+		<script src="https://cdn.tailwindcss.com"></script>
+
+		<!-- Lucide Icons -->
+		<script src="https://unpkg.com/lucide@latest"></script>
+
+		<!-- Tailwind Configuration -->
+		<script>
+			tailwind.config = {
+				theme: {
+					extend: {
+						fontFamily: {
+							sans: ['"Plus Jakarta Sans"', "sans-serif"],
+							display: ['"Space Grotesk"', "sans-serif"],
+						},
+						colors: {
+							stone: {
+								50: "#FAFAF9",
+							},
+						},
+					},
+				},
+			};
+		</script>
+
+		<style>
+			/* Custom Utilities */
+			.no-scrollbar::-webkit-scrollbar {
+				display: none;
+			}
+			.no-scrollbar {
+				-ms-overflow-style: none;
+				scrollbar-width: none;
+			}
+			.fade-in {
+				animation: fadeIn 0.5s ease-in-out;
+			}
+			@keyframes fadeIn {
+				from {
+					opacity: 0;
+					transform: translateY(10px);
+				}
+				to {
+					opacity: 1;
+					transform: translateY(0);
+				}
+			}
+		</style>
+	</head>
+	<body
+		class="bg-white font-sans text-gray-900 antialiased selection:bg-teal-100 selection:text-teal-900"
+	>
+		<!-- Navigation -->
+		<nav class="fixed z-50 w-full border-b border-gray-100 bg-white/80 backdrop-blur-md">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<div class="flex h-20 items-center justify-between">
+					<!-- Logo -->
+					<div class="flex cursor-pointer items-center" onclick="switchTab('home')">
+						<div
+							class="mr-3 flex h-8 w-8 items-center justify-center rounded-lg bg-teal-900"
+						>
+							<i data-lucide="shield-check" class="h-5 w-5 text-teal-50"></i>
+						</div>
+						<span class="font-display text-xl font-bold tracking-tight text-gray-900">
+							Mjakazi<span class="text-teal-600">Connect</span>
+						</span>
+					</div>
+
+					<!-- Desktop Menu -->
+					<div class="hidden items-center space-x-8 md:flex">
+						<button
+							onclick="switchTab('home')"
+							id="nav-home"
+							class="text-sm font-medium text-teal-900 transition-colors"
+						>
+							Find Caregivers
+						</button>
+						<button
+							onclick="scrollToSection('pricing')"
+							class="text-sm font-medium text-gray-500 transition-colors hover:text-gray-900"
+						>
+							Pricing
+						</button>
+						<button
+							onclick="scrollToSection('how-it-works')"
+							class="text-sm font-medium text-gray-500 hover:text-gray-900"
+						>
+							How it Works
+						</button>
+						<div class="mx-2 h-4 w-px bg-gray-200"></div>
+						<button class="text-sm font-medium text-gray-900 hover:text-teal-800">
+							Log in
+						</button>
+						<a
+							href="registration.html"
+							class="inline-flex items-center justify-center rounded-lg bg-teal-900 px-5 py-2 text-sm font-medium text-white shadow-lg shadow-teal-900/20 transition-all duration-200 hover:bg-teal-800 focus:ring-2 focus:ring-teal-900 focus:ring-offset-2 focus:outline-none"
+						>
+							Get Started
+						</a>
+					</div>
+
+					<!-- Mobile Menu Button -->
+					<div class="flex items-center md:hidden">
+						<button
+							onclick="toggleMobileMenu()"
+							class="text-gray-500 hover:text-gray-900"
+						>
+							<i id="menu-icon" data-lucide="menu" class="h-6 w-6"></i>
+							<i id="close-icon" data-lucide="x" class="hidden h-6 w-6"></i>
+						</button>
+					</div>
+				</div>
+			</div>
+
+			<!-- Mobile Menu -->
+			<div
+				id="mobile-menu"
+				class="absolute hidden w-full space-y-4 border-t border-gray-100 bg-white px-4 py-6 shadow-xl md:hidden"
+			>
+				<button
+					onclick="
+						switchTab('home');
+						toggleMobileMenu();
+					"
+					class="block w-full text-left font-medium text-gray-900"
+				>
+					Find Caregivers
+				</button>
+				<button
+					onclick="
+						scrollToSection('pricing');
+						toggleMobileMenu();
+					"
+					class="block w-full text-left font-medium text-gray-900"
+				>
+					Pricing
+				</button>
+				<button
+					onclick="
+						scrollToSection('how-it-works');
+						toggleMobileMenu();
+					"
+					class="block w-full text-left font-medium text-gray-900"
+				>
+					How it Works
+				</button>
+				<button class="block w-full text-left font-medium text-gray-900">Log in</button>
+				<a
+					href="registration.html"
+					class="inline-flex w-full items-center justify-center rounded-lg bg-teal-900 px-6 py-3 font-medium text-white shadow-lg shadow-teal-900/20 hover:bg-teal-800"
+					>Get Started</a
+				>
+			</div>
+		</nav>
+
+		<!-- Main Content -->
+		<main class="relative">
+			<!-- HOME VIEW -->
+			<div id="home-view" class="fade-in">
+				<!-- Hero Section -->
+				<section class="overflow-hidden pt-32 pb-20 sm:pt-40 sm:pb-24">
+					<div class="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+						<div class="items-center lg:grid lg:grid-cols-12 lg:gap-16">
+							<!-- Text Content -->
+							<div class="text-center lg:col-span-6 lg:text-left">
+								<div
+									class="mb-6 inline-flex items-center rounded-full border border-teal-100 bg-teal-50 px-3 py-1 text-xs font-semibold tracking-wider text-teal-800 uppercase"
+								>
+									<i data-lucide="check-circle" class="mr-2 h-3 w-3"></i>
+									Vetted. Verified. Trusted.
+								</div>
+								<h1
+									class="font-display mb-6 text-5xl leading-[1.1] font-bold text-gray-900 sm:text-6xl lg:text-7xl"
+								>
+									Professional care for your
+									<span
+										class="bg-linear-to-r from-teal-800 to-emerald-600 bg-clip-text text-transparent"
+										>peace of mind.</span
+									>
+								</h1>
+								<p
+									class="mx-auto mb-8 text-lg leading-relaxed text-gray-600 sm:text-xl lg:mx-0"
+								>
+									Mjakazi Connect is the definitive platform for families to discover,
+									evaluate, and hire vetted domestic professionals.
+								</p>
+								<div
+									class="flex flex-col items-center justify-center gap-4 sm:flex-row lg:justify-start"
+								>
+									<button
+										class="group inline-flex w-full items-center justify-center rounded-lg bg-teal-900 px-6 py-3 font-medium text-white shadow-lg shadow-teal-900/20 transition-all duration-200 hover:bg-teal-800 sm:w-auto"
+									>
+										Find a Caregiver
+										<i
+											data-lucide="arrow-right"
+											class="ml-2 h-4 w-4 transition-transform group-hover:translate-x-1"
+										></i>
+									</button>
+									<button
+										onclick="scrollToSection('pricing')"
+										class="inline-flex w-full items-center justify-center rounded-lg border border-gray-200 bg-white px-6 py-3 font-medium text-teal-900 shadow-sm transition-all duration-200 hover:border-teal-200 hover:bg-teal-50 sm:w-auto"
+									>
+										View Pricing
+									</button>
+								</div>
+								<div
+									class="mt-10 flex items-center justify-center space-x-8 border-t border-gray-100 pt-8 lg:justify-start"
+								>
+									<div class="flex flex-col">
+										<span class="font-display text-2xl font-bold text-gray-900">2k+</span>
+										<span class="text-sm text-gray-500">Active Professionals</span>
+									</div>
+									<div class="h-8 w-px bg-gray-200"></div>
+									<div class="flex flex-col">
+										<span class="font-display text-2xl font-bold text-gray-900">98%</span>
+										<span class="text-sm text-gray-500">Satisfaction Rate</span>
+									</div>
+								</div>
+							</div>
+
+							<!-- Visual / Dashboard Mockup -->
+							<div class="relative mt-16 lg:col-span-6 lg:mt-0">
+								<div
+									class="absolute -inset-4 -rotate-2 transform rounded-4xl bg-linear-to-r from-teal-50 to-emerald-50"
+								></div>
+								<div
+									class="relative overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-2xl"
+								>
+									<!-- Fake Browser Chrome -->
+									<div
+										class="flex items-center space-x-2 border-b border-gray-100 bg-gray-50 px-4 py-3"
+									>
+										<div class="h-3 w-3 rounded-full bg-red-400"></div>
+										<div class="h-3 w-3 rounded-full bg-yellow-400"></div>
+										<div class="h-3 w-3 rounded-full bg-green-400"></div>
+									</div>
+									<!-- Content Preview -->
+									<div class="p-6">
+										<div class="mb-6 flex items-center justify-between">
+											<h3 class="font-display font-bold text-gray-900">Recent Matches</h3>
+											<span class="text-sm font-medium text-teal-600">View All</span>
+										</div>
+										<div class="space-y-4">
+											<!-- Mock Item 1 -->
+											<div
+												class="flex items-center rounded-xl border border-gray-100 p-3 transition-colors hover:border-teal-100 hover:bg-teal-50/30"
+											>
+												<div
+													class="h-12 w-12 shrink-0 overflow-hidden rounded-full bg-gray-200"
+												>
+													<img
+														src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100&h=100"
+														alt="User"
+														class="h-full w-full object-cover"
+													/>
+												</div>
+												<div class="ml-4 flex-1">
+													<div class="flex items-center justify-between">
+														<p class="font-semibold text-gray-900">
+															Verified Professional
+														</p>
+														<span
+															class="inline-flex items-center rounded-full border border-teal-100 bg-teal-50 px-2.5 py-0.5 text-xs font-medium text-teal-700"
+															>Available</span
+														>
+													</div>
+													<p class="text-sm text-gray-500">Nairobi • 4.9 Stars</p>
+												</div>
+												<button class="ml-4 p-2 text-gray-400 hover:text-teal-600">
+													<i data-lucide="chevron-right" class="h-5 w-5"></i>
+												</button>
+											</div>
+											<!-- Mock Item 2 -->
+											<div
+												class="flex items-center rounded-xl border border-gray-100 p-3 transition-colors hover:border-teal-100 hover:bg-teal-50/30"
+											>
+												<div
+													class="h-12 w-12 shrink-0 overflow-hidden rounded-full bg-gray-200"
+												>
+													<img
+														src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80&w=100&h=100"
+														alt="User"
+														class="h-full w-full object-cover"
+													/>
+												</div>
+												<div class="ml-4 flex-1">
+													<div class="flex items-center justify-between">
+														<p class="font-semibold text-gray-900">
+															Verified Professional
+														</p>
+														<span
+															class="inline-flex items-center rounded-full border border-teal-100 bg-teal-50 px-2.5 py-0.5 text-xs font-medium text-teal-700"
+															>Available</span
+														>
+													</div>
+													<p class="text-sm text-gray-500">Nairobi • 5.0 Stars</p>
+												</div>
+												<button class="ml-4 p-2 text-gray-400 hover:text-teal-600">
+													<i data-lucide="chevron-right" class="h-5 w-5"></i>
+												</button>
+											</div>
+										</div>
+										<div class="mt-6 rounded-xl border border-gray-100 bg-gray-50 p-4">
+											<div class="flex items-start">
+												<i
+													data-lucide="lock"
+													class="mt-0.5 mr-3 h-5 w-5 text-gray-400"
+												></i>
+												<div>
+													<p class="text-sm font-medium text-gray-900">
+														Identity Verification Active
+													</p>
+													<p class="mt-1 text-xs text-gray-500">
+														We verify ID, Certificate of Good Conduct, and references for
+														every caregiver.
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Feature Grid -->
+				<section class="bg-white py-24">
+					<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+						<div class="mx-auto mb-16 max-w-3xl text-center">
+							<h2 class="font-display mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
+								Why families choose Mjakazi
+							</h2>
+							<p class="text-lg text-gray-600">
+								We don't just list phone numbers. We manage a secure ecosystem designed
+								for safety and reliability.
+							</p>
+						</div>
+
+						<div class="grid gap-12 md:grid-cols-3">
+							<div class="group">
+								<div
+									class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50 transition-transform duration-300 group-hover:scale-110"
+								>
+									<i data-lucide="shield-check" class="h-6 w-6 text-teal-700"></i>
+								</div>
+								<h3 class="font-display mb-3 text-xl font-bold text-gray-900">
+									Rigorous Vetting
+								</h3>
+								<p class="leading-relaxed text-gray-600">
+									Every profile is manually reviewed. We check IDs, conduct background
+									checks, and verify past employment references before they go live.
+								</p>
+							</div>
+
+							<div class="group">
+								<div
+									class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50 transition-transform duration-300 group-hover:scale-110"
+								>
+									<i data-lucide="lock" class="h-6 w-6 text-teal-700"></i>
+								</div>
+								<h3 class="font-display mb-3 text-xl font-bold text-gray-900">
+									Privacy First
+								</h3>
+								<p class="leading-relaxed text-gray-600">
+									Your contact details are secure. Caregivers only see your job
+									requirements, not your personal data, until you choose to connect.
+								</p>
+							</div>
+
+							<div class="group">
+								<div
+									class="mb-6 flex h-12 w-12 items-center justify-center rounded-xl bg-teal-50 transition-transform duration-300 group-hover:scale-110"
+								>
+									<i data-lucide="users" class="h-6 w-6 text-teal-700"></i>
+								</div>
+								<h3 class="font-display mb-3 text-xl font-bold text-gray-900">
+									Active Moderation
+								</h3>
+								<p class="leading-relaxed text-gray-600">
+									Our admin team monitors interactions and resolves disputes, ensuring a
+									professional environment for both families and caregivers.
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Directory Preview -->
+				<section class="border-y border-gray-100 bg-stone-50 py-24">
+					<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+						<div class="mb-12 flex flex-col items-end justify-between md:flex-row">
+							<div>
+								<h2
+									class="font-display mb-4 text-3xl font-bold text-gray-900 md:text-4xl"
+								>
+									Latest Verified Profiles
+								</h2>
+								<p class="max-w-xl text-gray-600">
+									Browse our directory of qualified professionals. Unlock full profiles
+									and contact details with a subscription.
+								</p>
+							</div>
+							<button
+								class="mt-6 hidden items-center justify-center rounded-lg border border-teal-900/20 px-6 py-3 font-medium text-teal-900 transition-all duration-200 hover:bg-teal-50 md:mt-0 md:inline-flex"
+							>
+								View Directory <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+							</button>
+						</div>
+
+						<div class="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+							<!-- Profile 1 -->
+							<div
+								class="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:border-teal-100 hover:shadow-xl"
+							>
+								<div class="mb-4 flex items-start justify-between">
+									<div class="flex items-center">
+										<img
+											src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=200&h=200"
+											alt="Sarah M."
+											class="h-14 w-14 rounded-full border-2 border-white object-cover shadow-sm"
+										/>
+										<div class="ml-3">
+											<h4
+												class="font-bold text-gray-900 transition-colors group-hover:text-teal-700"
+											>
+												Sarah M.
+											</h4>
+											<p class="text-sm text-gray-500">Nanny & Tutor</p>
+										</div>
+									</div>
+									<div class="text-teal-600" title="Verified ID">
+										<i data-lucide="shield-check" class="h-5 w-5"></i>
+									</div>
+								</div>
+								<div class="mb-6 space-y-2">
+									<div class="flex items-center text-sm text-gray-600">
+										<i data-lucide="map-pin" class="mr-2 h-4 w-4 text-gray-400"></i>
+										Kilimani, Nairobi
+									</div>
+									<div class="flex items-center text-sm text-gray-600">
+										<i data-lucide="briefcase" class="mr-2 h-4 w-4 text-gray-400"></i>
+										5 Years Experience
+									</div>
+									<div class="flex items-center text-sm text-gray-600">
+										<i
+											data-lucide="star"
+											class="mr-2 h-4 w-4 fill-current text-yellow-400"
+										></i>
+										4.9 / 5.0 Rating
+									</div>
+								</div>
+								<div class="mb-6 flex flex-wrap gap-2">
+									<span
+										class="rounded-md border border-gray-100 bg-gray-50 px-2 py-1 text-xs text-gray-600"
+										>First Aid</span
+									>
+									<span
+										class="rounded-md border border-gray-100 bg-gray-50 px-2 py-1 text-xs text-gray-600"
+										>Homework Support</span
+									>
+									<span
+										class="rounded-md border border-gray-100 bg-gray-50 px-2 py-1 text-xs text-gray-600"
+										>Infant Care</span
+									>
+								</div>
+								<div class="border-t border-gray-50 pt-4">
+									<button
+										class="inline-flex w-full items-center justify-center rounded-lg bg-teal-900 px-6 py-2.5 text-sm font-medium text-white shadow-lg shadow-teal-900/20 transition-all duration-200 hover:bg-teal-800"
+									>
+										<i data-lucide="lock" class="mr-2 h-3 w-3 opacity-70"></i>
+										Unlock Contact Info
+									</button>
+								</div>
+							</div>
+
+							<!-- Profile 2 -->
+							<div
+								class="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:border-teal-100 hover:shadow-xl"
+							>
+								<div class="mb-4 flex items-start justify-between">
+									<div class="flex items-center">
+										<img
+											src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&q=80&w=200&h=200"
+											alt="Beatrice K."
+											class="h-14 w-14 rounded-full border-2 border-white object-cover shadow-sm"
+										/>
+										<div class="ml-3">
+											<h4
+												class="font-bold text-gray-900 transition-colors group-hover:text-teal-700"
+											>
+												Beatrice K.
+											</h4>
+											<p class="text-sm text-gray-500">House Manager</p>
+										</div>
+									</div>
+									<div class="text-teal-600" title="Verified ID">
+										<i data-lucide="shield-check" class="h-5 w-5"></i>
+									</div>
+								</div>
+								<div class="mb-6 space-y-2">
+									<div class="flex items-center text-sm text-gray-600">
+										<i data-lucide="map-pin" class="mr-2 h-4 w-4 text-gray-400"></i>
+										Westlands, Nairobi
+									</div>
+									<div class="flex items-center text-sm text-gray-600">
+										<i data-lucide="briefcase" class="mr-2 h-4 w-4 text-gray-400"></i>
+										8 Years Experience
+									</div>
+									<div class="flex items-center text-sm text-gray-600">
+										<i
+											data-lucide="star"
+											class="mr-2 h-4 w-4 fill-current text-yellow-400"
+										></i>
+										5.0 / 5.0 Rating
+									</div>
+								</div>
+								<div class="mb-6 flex flex-wrap gap-2">
+									<span
+										class="rounded-md border border-gray-100 bg-gray-50 px-2 py-1 text-xs text-gray-600"
+										>Cooking</span
+									>
+									<span
+										class="rounded-md border border-gray-100 bg-gray-50 px-2 py-1 text-xs text-gray-600"
+										>Cleaning</span
+									>
+									<span
+										class="rounded-md border border-gray-100 bg-gray-50 px-2 py-1 text-xs text-gray-600"
+										>Inventory Mgmt</span
+									>
+								</div>
+								<div class="border-t border-gray-50 pt-4">
+									<button
+										class="inline-flex w-full items-center justify-center rounded-lg bg-teal-900 px-6 py-2.5 text-sm font-medium text-white shadow-lg shadow-teal-900/20 transition-all duration-200 hover:bg-teal-800"
+									>
+										<i data-lucide="lock" class="mr-2 h-3 w-3 opacity-70"></i>
+										Unlock Contact Info
+									</button>
+								</div>
+							</div>
+
+							<!-- Profile 3 -->
+							<div
+								class="group rounded-2xl border border-gray-100 bg-white p-6 shadow-sm transition-all duration-300 hover:border-teal-100 hover:shadow-xl"
+							>
+								<div class="mb-4 flex items-start justify-between">
+									<div class="flex items-center">
+										<img
+											src="https://images.unsplash.com/photo-1589156280159-27698a70f29e?auto=format&fit=crop&q=80&w=200&h=200"
+											alt="Grace O."
+											class="h-14 w-14 rounded-full border-2 border-white object-cover shadow-sm"
+										/>
+										<div class="ml-3">
+											<h4
+												class="font-bold text-gray-900 transition-colors group-hover:text-teal-700"
+											>
+												Grace O.
+											</h4>
+											<p class="text-sm text-gray-500">Elderly Care</p>
+										</div>
+									</div>
+									<div class="text-teal-600" title="Verified ID">
+										<i data-lucide="shield-check" class="h-5 w-5"></i>
+									</div>
+								</div>
+								<div class="mb-6 space-y-2">
+									<div class="flex items-center text-sm text-gray-600">
+										<i data-lucide="map-pin" class="mr-2 h-4 w-4 text-gray-400"></i>
+										Lavington, Nairobi
+									</div>
+									<div class="flex items-center text-sm text-gray-600">
+										<i data-lucide="briefcase" class="mr-2 h-4 w-4 text-gray-400"></i>
+										12 Years Experience
+									</div>
+									<div class="flex items-center text-sm text-gray-600">
+										<i
+											data-lucide="star"
+											class="mr-2 h-4 w-4 fill-current text-yellow-400"
+										></i>
+										4.8 / 5.0 Rating
+									</div>
+								</div>
+								<div class="mb-6 flex flex-wrap gap-2">
+									<span
+										class="rounded-md border border-gray-100 bg-gray-50 px-2 py-1 text-xs text-gray-600"
+										>Palliative Care</span
+									>
+									<span
+										class="rounded-md border border-gray-100 bg-gray-50 px-2 py-1 text-xs text-gray-600"
+										>Physio Basics</span
+									>
+									<span
+										class="rounded-md border border-gray-100 bg-gray-50 px-2 py-1 text-xs text-gray-600"
+										>Meal Prep</span
+									>
+								</div>
+								<div class="border-t border-gray-50 pt-4">
+									<button
+										class="inline-flex w-full items-center justify-center rounded-lg bg-teal-900 px-6 py-2.5 text-sm font-medium text-white shadow-lg shadow-teal-900/20 transition-all duration-200 hover:bg-teal-800"
+									>
+										<i data-lucide="lock" class="mr-2 h-3 w-3 opacity-70"></i>
+										Unlock Contact Info
+									</button>
+								</div>
+							</div>
+						</div>
+
+						<div class="mt-8 md:hidden">
+							<button
+								class="inline-flex w-full items-center justify-center rounded-lg border border-teal-900/20 px-6 py-3 font-medium text-teal-900 transition-all duration-200 hover:bg-teal-50"
+							>
+								View Directory <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+							</button>
+						</div>
+					</div>
+				</section>
+
+				<!-- How It Works -->
+				<section id="how-it-works" class="relative bg-white py-24">
+					<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+						<div class="mx-auto mb-16 max-w-3xl text-center">
+							<h2 class="font-display mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
+								3 Simple Steps to Hire
+							</h2>
+							<p class="text-lg text-gray-600">
+								We've streamlined the process to help you find trusted help quickly,
+								without the agency middleman.
+							</p>
+						</div>
+
+						<div class="relative grid gap-12 md:grid-cols-3">
+							<!-- Connector Line (Desktop Only) -->
+							<div
+								class="absolute top-12 right-[16%] left-[16%] -z-10 hidden h-0.5 bg-gray-100 md:block"
+							></div>
+
+							<!-- Step 1 -->
+							<div class="group relative flex flex-col items-center text-center">
+								<div
+									class="mb-6 flex h-24 w-24 items-center justify-center rounded-full border-4 border-teal-50 bg-white shadow-sm transition-colors duration-300 group-hover:border-teal-100"
+								>
+									<div
+										class="flex h-12 w-12 items-center justify-center rounded-full bg-teal-50 text-xl font-bold text-teal-800 transition-colors duration-300 group-hover:bg-teal-100"
+									>
+										1
+									</div>
+								</div>
+								<h3 class="font-display mb-3 text-xl font-bold text-gray-900">
+									Browse & Filter
+								</h3>
+								<p class="max-w-xs leading-relaxed text-gray-600">
+									Use our advanced filters to find caregivers in your area who match your
+									specific needs, schedule, and budget.
+								</p>
+							</div>
+
+							<!-- Step 2 -->
+							<div class="group relative flex flex-col items-center text-center">
+								<div
+									class="mb-6 flex h-24 w-24 items-center justify-center rounded-full border-4 border-teal-50 bg-white shadow-sm transition-colors duration-300 group-hover:border-teal-100"
+								>
+									<div
+										class="flex h-12 w-12 items-center justify-center rounded-full bg-teal-50 text-xl font-bold text-teal-800 transition-colors duration-300 group-hover:bg-teal-100"
+									>
+										2
+									</div>
+								</div>
+								<h3 class="font-display mb-3 text-xl font-bold text-gray-900">
+									Unlock Contact Info
+								</h3>
+								<p class="max-w-xs leading-relaxed text-gray-600">
+									Found a match? Pay a small subscription fee to unlock their phone number
+									and full documents instantly.
+								</p>
+							</div>
+
+							<!-- Step 3 -->
+							<div class="group relative flex flex-col items-center text-center">
+								<div
+									class="mb-6 flex h-24 w-24 items-center justify-center rounded-full border-4 border-teal-50 bg-white shadow-sm transition-colors duration-300 group-hover:border-teal-100"
+								>
+									<div
+										class="flex h-12 w-12 items-center justify-center rounded-full bg-teal-50 text-xl font-bold text-teal-800 transition-colors duration-300 group-hover:bg-teal-100"
+									>
+										3
+									</div>
+								</div>
+								<h3 class="font-display mb-3 text-xl font-bold text-gray-900">
+									Interview & Hire
+								</h3>
+								<p class="max-w-xs leading-relaxed text-gray-600">
+									Contact them directly to arrange an interview. No commission fees—just a
+									direct, honest connection.
+								</p>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Pricing -->
+				<section id="pricing" class="border-t border-gray-100 bg-stone-50 py-24">
+					<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+						<div class="mx-auto mb-16 max-w-3xl text-center">
+							<h2 class="font-display mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
+								Simple, Transparent Pricing
+							</h2>
+							<p class="text-lg text-gray-600">
+								Choose the plan that fits your search. No hidden fees, no agency
+								commissions.
+							</p>
+						</div>
+
+						<div class="mx-auto grid max-w-6xl gap-8 md:grid-cols-3 lg:gap-12">
+							<!-- Basic Plan -->
+							<div
+								class="flex flex-col rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-300 hover:border-teal-200 hover:shadow-lg"
+							>
+								<div class="mb-6">
+									<h3 class="text-lg font-bold text-gray-900">Day Pass</h3>
+									<p class="mt-2 text-sm text-gray-500">
+										Perfect for urgent, quick hires.
+									</p>
+								</div>
+								<div class="mb-8">
+									<span class="font-display text-4xl font-bold text-gray-900"
+										>KSh 500</span
+									>
+									<span class="text-gray-500"> / day</span>
+								</div>
+								<ul class="mb-8 flex-1 space-y-4">
+									<li class="flex items-start">
+										<i
+											data-lucide="check"
+											class="mr-3 h-5 w-5 shrink-0 text-teal-600"
+										></i>
+										<span class="text-sm text-gray-600">Unlock up to 3 contacts</span>
+									</li>
+									<li class="flex items-start">
+										<i
+											data-lucide="check"
+											class="mr-3 h-5 w-5 shrink-0 text-teal-600"
+										></i>
+										<span class="text-sm text-gray-600">View basic profiles</span>
+									</li>
+									<li class="flex items-start">
+										<i
+											data-lucide="check"
+											class="mr-3 h-5 w-5 shrink-0 text-teal-600"
+										></i>
+										<span class="text-sm text-gray-600">24-hour access</span>
+									</li>
+								</ul>
+								<button
+									class="inline-flex w-full items-center justify-center rounded-lg border border-teal-900/20 px-6 py-3 font-medium text-teal-900 transition-all duration-200 hover:bg-teal-50"
+								>
+									Get Day Pass
+								</button>
+							</div>
+
+							<!-- Pro Plan (Highlighted) -->
+							<div
+								class="relative flex transform flex-col rounded-2xl border-2 border-teal-600 bg-white p-8 shadow-xl md:-translate-y-4"
+							>
+								<div class="absolute top-0 right-0 left-0 -mt-4 flex justify-center">
+									<span
+										class="rounded-full bg-teal-600 px-3 py-1 text-xs font-bold tracking-wide text-white uppercase"
+										>Most Popular</span
+									>
+								</div>
+								<div class="mb-6">
+									<h3 class="text-lg font-bold text-gray-900">Monthly Access</h3>
+									<p class="mt-2 text-sm text-gray-500">For finding the perfect match.</p>
+								</div>
+								<div class="mb-8">
+									<span class="font-display text-4xl font-bold text-gray-900"
+										>KSh 1,500</span
+									>
+									<span class="text-gray-500"> / mo</span>
+								</div>
+								<ul class="mb-8 flex-1 space-y-4">
+									<li class="flex items-start">
+										<div class="mr-3 rounded-full bg-teal-100 p-0.5">
+											<i data-lucide="check" class="h-3.5 w-3.5 text-teal-700"></i>
+										</div>
+										<span class="text-sm font-medium text-gray-700"
+											>Unlimited Contact Unlocks</span
+										>
+									</li>
+									<li class="flex items-start">
+										<div class="mr-3 rounded-full bg-teal-100 p-0.5">
+											<i data-lucide="check" class="h-3.5 w-3.5 text-teal-700"></i>
+										</div>
+										<span class="text-sm font-medium text-gray-700"
+											>View detailed references</span
+										>
+									</li>
+									<li class="flex items-start">
+										<div class="mr-3 rounded-full bg-teal-100 p-0.5">
+											<i data-lucide="check" class="h-3.5 w-3.5 text-teal-700"></i>
+										</div>
+										<span class="text-sm font-medium text-gray-700"
+											>Document verification status</span
+										>
+									</li>
+									<li class="flex items-start">
+										<div class="mr-3 rounded-full bg-teal-100 p-0.5">
+											<i data-lucide="check" class="h-3.5 w-3.5 text-teal-700"></i>
+										</div>
+										<span class="text-sm font-medium text-gray-700">30-day access</span>
+									</li>
+								</ul>
+								<button
+									class="inline-flex w-full items-center justify-center rounded-lg bg-teal-900 px-6 py-3 font-medium text-white shadow-lg shadow-teal-900/20 transition-all duration-200 hover:bg-teal-800"
+								>
+									Start Monthly Plan
+								</button>
+							</div>
+
+							<!-- Agency/Concierge Plan -->
+							<div
+								class="flex flex-col rounded-2xl border border-gray-200 bg-white p-8 transition-all duration-300 hover:border-teal-200 hover:shadow-lg"
+							>
+								<div class="mb-6">
+									<h3 class="text-lg font-bold text-gray-900">Premium Concierge</h3>
+									<p class="mt-2 text-sm text-gray-500">
+										Let us handle the hiring for you.
+									</p>
+								</div>
+								<div class="mb-8">
+									<span class="font-display text-4xl font-bold text-gray-900"
+										>KSh 4,500</span
+									>
+									<span class="text-gray-500"> / hire</span>
+								</div>
+								<ul class="mb-8 flex-1 space-y-4">
+									<li class="flex items-start">
+										<i
+											data-lucide="check"
+											class="mr-3 h-5 w-5 shrink-0 text-teal-600"
+										></i>
+										<span class="text-sm text-gray-600"
+											>Personalized candidate shortlist</span
+										>
+									</li>
+									<li class="flex items-start">
+										<i
+											data-lucide="check"
+											class="mr-3 h-5 w-5 shrink-0 text-teal-600"
+										></i>
+										<span class="text-sm text-gray-600"
+											>Interview scheduling support</span
+										>
+									</li>
+									<li class="flex items-start">
+										<i
+											data-lucide="check"
+											class="mr-3 h-5 w-5 shrink-0 text-teal-600"
+										></i>
+										<span class="text-sm text-gray-600"
+											>Contract drafting assistance</span
+										>
+									</li>
+									<li class="flex items-start">
+										<i
+											data-lucide="check"
+											class="mr-3 h-5 w-5 shrink-0 text-teal-600"
+										></i>
+										<span class="text-sm text-gray-600"
+											>Replacement guarantee (30 days)</span
+										>
+									</li>
+								</ul>
+								<button
+									class="inline-flex w-full items-center justify-center rounded-lg border border-teal-900/20 px-6 py-3 font-medium text-teal-900 transition-all duration-200 hover:bg-teal-50"
+								>
+									Contact Sales
+								</button>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Testimonials -->
+				<section class="bg-white py-24">
+					<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+						<div class="mx-auto mb-16 max-w-3xl text-center">
+							<h2 class="font-display mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
+								Trusted by Nairobi Families
+							</h2>
+							<p class="text-lg text-gray-600">
+								See why homeowners are switching from informal referrals to our secure
+								platform.
+							</p>
+						</div>
+
+						<div class="grid gap-8 md:grid-cols-3">
+							<!-- Testimonial 1 -->
+							<div
+								class="relative rounded-2xl bg-gray-50 p-8 transition-colors duration-300 hover:bg-teal-50/50"
+							>
+								<i
+									data-lucide="quote"
+									class="absolute top-6 right-6 h-10 w-10 text-teal-200"
+								></i>
+								<div class="mb-6 flex space-x-1">
+									<i data-lucide="star" class="h-5 w-5 fill-current text-yellow-400"></i>
+									<i data-lucide="star" class="h-5 w-5 fill-current text-yellow-400"></i>
+									<i data-lucide="star" class="h-5 w-5 fill-current text-yellow-400"></i>
+									<i data-lucide="star" class="h-5 w-5 fill-current text-yellow-400"></i>
+									<i data-lucide="star" class="h-5 w-5 fill-current text-yellow-400"></i>
+								</div>
+								<p
+									class="relative z-10 mb-8 text-lg leading-relaxed text-gray-700 italic"
+								>
+									"Finding a reliable house manager used to be a nightmare of agency fees
+									and disappointments. Mjakazi Connect gave me control. I found Beatrice
+									in 2 days, and she's been a blessing to our home."
+								</p>
+								<div class="flex items-center">
+									<div
+										class="flex h-10 w-10 items-center justify-center rounded-full bg-teal-900 text-sm font-bold text-white"
+									>
+										W
+									</div>
+									<div class="ml-3">
+										<h4 class="font-bold text-gray-900">Wanjiku K.</h4>
+										<p class="text-sm text-gray-500">Mother of 2 • Kileleshwa</p>
+									</div>
+								</div>
+							</div>
+
+							<!-- Testimonial 2 -->
+							<div
+								class="relative rounded-2xl bg-gray-50 p-8 transition-colors duration-300 hover:bg-teal-50/50"
+							>
+								<i
+									data-lucide="quote"
+									class="absolute top-6 right-6 h-10 w-10 text-teal-200"
+								></i>
+								<div class="mb-6 flex space-x-1">
+									<i data-lucide="star" class="h-5 w-5 fill-current text-yellow-400"></i>
+									<i data-lucide="star" class="h-5 w-5 fill-current text-yellow-400"></i>
+									<i data-lucide="star" class="h-5 w-5 fill-current text-yellow-400"></i>
+									<i data-lucide="star" class="h-5 w-5 fill-current text-yellow-400"></i>
+									<i data-lucide="star" class="h-5 w-5 fill-current text-yellow-400"></i>
+								</div>
+								<p
+									class="relative z-10 mb-8 text-lg leading-relaxed text-gray-700 italic"
+								>
+									"I appreciated the transparency. Being able to see the verification
+									status of documents before I even contacted anyone gave me so much peace
+									of mind. The subscription model is fair and affordable."
+								</p>
+								<div class="flex items-center">
+									<div
+										class="flex h-10 w-10 items-center justify-center rounded-full bg-teal-900 text-sm font-bold text-white"
+									>
+										D
+									</div>
+									<div class="ml-3">
+										<h4 class="font-bold text-gray-900">David O.</h4>
+										<p class="text-sm text-gray-500">Homeowner • Runda</p>
+									</div>
+								</div>
+							</div>
+
+							<!-- Testimonial 3 -->
+							<div
+								class="relative rounded-2xl bg-gray-50 p-8 transition-colors duration-300 hover:bg-teal-50/50"
+							>
+								<i
+									data-lucide="quote"
+									class="absolute top-6 right-6 h-10 w-10 text-teal-200"
+								></i>
+								<div class="mb-6 flex space-x-1">
+									<i data-lucide="star" class="h-5 w-5 fill-current text-yellow-400"></i>
+									<i data-lucide="star" class="h-5 w-5 fill-current text-yellow-400"></i>
+									<i data-lucide="star" class="h-5 w-5 fill-current text-yellow-400"></i>
+									<i data-lucide="star" class="h-5 w-5 fill-current text-yellow-400"></i>
+									<i data-lucide="star" class="h-5 w-5 text-gray-300"></i>
+								</div>
+								<p
+									class="relative z-10 mb-8 text-lg leading-relaxed text-gray-700 italic"
+								>
+									"Finally, a platform that treats this professionally. The profile
+									details were accurate, and the vetting process is clearly more than just
+									a checkbox. Highly recommend for anyone looking for serious help."
+								</p>
+								<div class="flex items-center">
+									<div
+										class="flex h-10 w-10 items-center justify-center rounded-full bg-teal-900 text-sm font-bold text-white"
+									>
+										F
+									</div>
+									<div class="ml-3">
+										<h4 class="font-bold text-gray-900">Fatuma A.</h4>
+										<p class="text-sm text-gray-500">Busy Professional • South C</p>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</section>
+
+				<!-- Latest Insights (Blog Preview) -->
+				<section class="border-t border-gray-100 bg-stone-50 py-24">
+					<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+						<div class="mb-12 flex flex-col items-end justify-between md:flex-row">
+							<div>
+								<h2
+									class="font-display mb-4 text-3xl font-bold text-gray-900 md:text-4xl"
+								>
+									Latest Insights
+								</h2>
+								<p class="max-w-xl text-gray-600">
+									Expert advice on domestic employment, safety, and building a great home
+									environment.
+								</p>
+							</div>
+							<button
+								onclick="switchTab('blog')"
+								class="mt-6 hidden items-center justify-center rounded-lg border border-teal-900/20 px-6 py-3 font-medium text-teal-900 transition-all duration-200 hover:bg-teal-50 md:mt-0 md:inline-flex"
+							>
+								View All Articles <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+							</button>
+						</div>
+
+						<div class="grid gap-8 md:grid-cols-3">
+							<!-- Post 1 -->
+							<article
+								onclick="switchTab('blog')"
+								class="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white transition-all duration-300 hover:border-teal-100 hover:shadow-lg"
+							>
+								<div class="relative aspect-16/10 overflow-hidden bg-gray-100">
+									<div
+										class="absolute inset-0 bg-teal-900/10 transition-colors duration-300 group-hover:bg-transparent"
+									></div>
+									<div
+										class="flex h-full w-full items-center justify-center bg-linear-to-br from-teal-50 to-emerald-100"
+									>
+										<i
+											data-lucide="file-check"
+											class="h-12 w-12 text-gray-300 transition-transform duration-500 group-hover:scale-110"
+										></i>
+									</div>
+									<div class="absolute top-4 left-4">
+										<span
+											class="inline-flex items-center rounded-full border border-gray-100 bg-white px-2.5 py-0.5 text-xs font-medium text-gray-700"
+											>Safety First</span
+										>
+									</div>
+								</div>
+								<div class="flex flex-1 flex-col p-6">
+									<div class="mb-3 flex items-center space-x-2 text-xs text-gray-500">
+										<span>Oct 12, 2024</span>
+										<span class="h-1 w-1 rounded-full bg-gray-300"></span>
+										<span class="flex items-center"
+											><i data-lucide="clock" class="mr-1 h-3 w-3"></i> 4 min read</span
+										>
+									</div>
+									<h3
+										class="font-display mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-teal-700"
+									>
+										The 5-Step Vetting Process Every Family Needs
+									</h3>
+									<p class="mb-4 line-clamp-3 text-sm leading-relaxed text-gray-600">
+										How we ensure only the most qualified professionals make it to our
+										directory.
+									</p>
+									<div
+										class="mt-auto flex items-center text-sm font-medium text-teal-700 transition-transform group-hover:translate-x-1"
+									>
+										Read Article <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+									</div>
+								</div>
+							</article>
+
+							<!-- Post 2 -->
+							<article
+								onclick="switchTab('blog')"
+								class="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white transition-all duration-300 hover:border-teal-100 hover:shadow-lg"
+							>
+								<div class="relative aspect-16/10 overflow-hidden bg-gray-100">
+									<div
+										class="absolute inset-0 bg-teal-900/10 transition-colors duration-300 group-hover:bg-transparent"
+									></div>
+									<div
+										class="flex h-full w-full items-center justify-center bg-linear-to-br from-orange-50 to-red-50"
+									>
+										<i
+											data-lucide="file-check"
+											class="h-12 w-12 text-gray-300 transition-transform duration-500 group-hover:scale-110"
+										></i>
+									</div>
+									<div class="absolute top-4 left-4">
+										<span
+											class="inline-flex items-center rounded-full border border-gray-100 bg-white px-2.5 py-0.5 text-xs font-medium text-gray-700"
+											>Legal & Compliance</span
+										>
+									</div>
+								</div>
+								<div class="flex flex-1 flex-col p-6">
+									<div class="mb-3 flex items-center space-x-2 text-xs text-gray-500">
+										<span>Oct 08, 2024</span>
+										<span class="h-1 w-1 rounded-full bg-gray-300"></span>
+										<span class="flex items-center"
+											><i data-lucide="clock" class="mr-1 h-3 w-3"></i> 6 min read</span
+										>
+									</div>
+									<h3
+										class="font-display mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-teal-700"
+									>
+										Understanding Domestic Work Contracts
+									</h3>
+									<p class="mb-4 line-clamp-3 text-sm leading-relaxed text-gray-600">
+										A guide to fair wages, NHIF/NSSF contributions, and building a lasting
+										relationship.
+									</p>
+									<div
+										class="mt-auto flex items-center text-sm font-medium text-teal-700 transition-transform group-hover:translate-x-1"
+									>
+										Read Article <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+									</div>
+								</div>
+							</article>
+
+							<!-- Post 3 -->
+							<article
+								onclick="switchTab('blog')"
+								class="group flex cursor-pointer flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white transition-all duration-300 hover:border-teal-100 hover:shadow-lg"
+							>
+								<div class="relative aspect-16/10 overflow-hidden bg-gray-100">
+									<div
+										class="absolute inset-0 bg-teal-900/10 transition-colors duration-300 group-hover:bg-transparent"
+									></div>
+									<div
+										class="flex h-full w-full items-center justify-center bg-linear-to-br from-blue-50 to-indigo-50"
+									>
+										<i
+											data-lucide="file-check"
+											class="h-12 w-12 text-gray-300 transition-transform duration-500 group-hover:scale-110"
+										></i>
+									</div>
+									<div class="absolute top-4 left-4">
+										<span
+											class="inline-flex items-center rounded-full border border-gray-100 bg-white px-2.5 py-0.5 text-xs font-medium text-gray-700"
+											>Market Insights</span
+										>
+									</div>
+								</div>
+								<div class="flex flex-1 flex-col p-6">
+									<div class="mb-3 flex items-center space-x-2 text-xs text-gray-500">
+										<span>Sep 28, 2024</span>
+										<span class="h-1 w-1 rounded-full bg-gray-300"></span>
+										<span class="flex items-center"
+											><i data-lucide="clock" class="mr-1 h-3 w-3"></i> 5 min read</span
+										>
+									</div>
+									<h3
+										class="font-display mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-teal-700"
+									>
+										Salary Guide: What to Pay in 2025
+									</h3>
+									<p class="mb-4 line-clamp-3 text-sm leading-relaxed text-gray-600">
+										Current market rates for nannies, house managers, and chefs in
+										Nairobi.
+									</p>
+									<div
+										class="mt-auto flex items-center text-sm font-medium text-teal-700 transition-transform group-hover:translate-x-1"
+									>
+										Read Article <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+									</div>
+								</div>
+							</article>
+						</div>
+
+						<div class="mt-8 md:hidden">
+							<button
+								onclick="switchTab('blog')"
+								class="inline-flex w-full items-center justify-center rounded-lg border border-teal-900/20 px-6 py-3 font-medium text-teal-900 transition-all duration-200 hover:bg-teal-50"
+							>
+								View All Articles <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+							</button>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<!-- BLOG VIEW (Hidden by default) -->
+			<div id="blog-view" class="fade-in hidden">
+				<div class="bg-stone-50 pt-32 pb-12">
+					<div class="mx-auto max-w-7xl px-4 text-center sm:px-6 lg:px-8">
+						<span
+							class="inline-flex items-center rounded-full border border-teal-100 bg-teal-50 px-2.5 py-0.5 text-xs font-medium text-teal-700"
+							>Mjakazi Connect Blog</span
+						>
+						<h1 class="font-display mt-4 text-4xl font-bold text-gray-900 md:text-5xl">
+							Expert Insights & Resources
+						</h1>
+						<p class="mx-auto mt-4 max-w-2xl text-xl text-gray-600">
+							Everything you need to know about domestic employment, safety, and building
+							a great home environment.
+						</p>
+					</div>
+				</div>
+
+				<!-- Blog Grid -->
+				<section class="bg-white py-24">
+					<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+						<div class="mx-auto mb-16 max-w-3xl text-center">
+							<h2 class="font-display mb-4 text-3xl font-bold text-gray-900 md:text-4xl">
+								Guidance for Households
+							</h2>
+							<p className="text-gray-600 text-lg">
+								Expert advice on hiring, contracts, and maintaining a healthy working
+								relationship.
+							</p>
+						</div>
+
+						<div class="grid gap-8 md:grid-cols-3">
+							<!-- Post 1 -->
+							<article class="group flex cursor-pointer flex-col">
+								<div
+									class="relative mb-6 aspect-16/10 overflow-hidden rounded-xl bg-gray-100"
+								>
+									<div
+										class="absolute inset-0 bg-teal-900/10 transition-colors duration-300 group-hover:bg-transparent"
+									></div>
+									<div
+										class="flex h-full w-full items-center justify-center bg-linear-to-br from-teal-50 to-emerald-100"
+									>
+										<i
+											data-lucide="file-check"
+											class="h-12 w-12 text-gray-300 transition-transform duration-500 group-hover:scale-110"
+										></i>
+									</div>
+									<div class="absolute top-4 left-4">
+										<span
+											class="inline-flex items-center rounded-full border border-gray-100 bg-white px-2.5 py-0.5 text-xs font-medium text-gray-700"
+											>Safety First</span
+										>
+									</div>
+								</div>
+								<div class="flex-1">
+									<div class="mb-3 flex items-center space-x-2 text-xs text-gray-500">
+										<span>Oct 12, 2024</span>
+										<span class="h-1 w-1 rounded-full bg-gray-300"></span>
+										<span class="flex items-center"
+											><i data-lucide="clock" class="mr-1 h-3 w-3"></i> 4 min read</span
+										>
+									</div>
+									<h3
+										class="font-display mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-teal-700"
+									>
+										The 5-Step Vetting Process Every Family Needs
+									</h3>
+									<p class="line-clamp-3 text-sm leading-relaxed text-gray-600">
+										How we ensure only the most qualified professionals make it to our
+										directory.
+									</p>
+								</div>
+								<div
+									class="mt-4 flex items-center text-sm font-medium text-teal-700 transition-transform group-hover:translate-x-1"
+								>
+									Read Article <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+								</div>
+							</article>
+
+							<!-- Post 2 -->
+							<article class="group flex cursor-pointer flex-col">
+								<div
+									class="relative mb-6 aspect-16/10 overflow-hidden rounded-xl bg-gray-100"
+								>
+									<div
+										class="absolute inset-0 bg-teal-900/10 transition-colors duration-300 group-hover:bg-transparent"
+									></div>
+									<div
+										class="flex h-full w-full items-center justify-center bg-linear-to-br from-orange-50 to-red-50"
+									>
+										<i
+											data-lucide="file-check"
+											class="h-12 w-12 text-gray-300 transition-transform duration-500 group-hover:scale-110"
+										></i>
+									</div>
+									<div class="absolute top-4 left-4">
+										<span
+											class="inline-flex items-center rounded-full border border-gray-100 bg-white px-2.5 py-0.5 text-xs font-medium text-gray-700"
+											>Legal & Compliance</span
+										>
+									</div>
+								</div>
+								<div class="flex-1">
+									<div class="mb-3 flex items-center space-x-2 text-xs text-gray-500">
+										<span>Oct 08, 2024</span>
+										<span class="h-1 w-1 rounded-full bg-gray-300"></span>
+										<span class="flex items-center"
+											><i data-lucide="clock" class="mr-1 h-3 w-3"></i> 6 min read</span
+										>
+									</div>
+									<h3
+										class="font-display mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-teal-700"
+									>
+										Understanding Domestic Work Contracts in Kenya
+									</h3>
+									<p class="line-clamp-3 text-sm leading-relaxed text-gray-600">
+										A guide to fair wages, NHIF/NSSF contributions, and building a lasting
+										relationship.
+									</p>
+								</div>
+								<div
+									class="mt-4 flex items-center text-sm font-medium text-teal-700 transition-transform group-hover:translate-x-1"
+								>
+									Read Article <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+								</div>
+							</article>
+
+							<!-- Post 3 -->
+							<article class="group flex cursor-pointer flex-col">
+								<div
+									class="relative mb-6 aspect-16/10 overflow-hidden rounded-xl bg-gray-100"
+								>
+									<div
+										class="absolute inset-0 bg-teal-900/10 transition-colors duration-300 group-hover:bg-transparent"
+									></div>
+									<div
+										class="flex h-full w-full items-center justify-center bg-linear-to-br from-blue-50 to-indigo-50"
+									>
+										<i
+											data-lucide="file-check"
+											class="h-12 w-12 text-gray-300 transition-transform duration-500 group-hover:scale-110"
+										></i>
+									</div>
+									<div class="absolute top-4 left-4">
+										<span
+											class="inline-flex items-center rounded-full border border-gray-100 bg-white px-2.5 py-0.5 text-xs font-medium text-gray-700"
+											>Market Insights</span
+										>
+									</div>
+								</div>
+								<div class="flex-1">
+									<div class="mb-3 flex items-center space-x-2 text-xs text-gray-500">
+										<span>Sep 28, 2024</span>
+										<span class="h-1 w-1 rounded-full bg-gray-300"></span>
+										<span class="flex items-center"
+											><i data-lucide="clock" class="mr-1 h-3 w-3"></i> 5 min read</span
+										>
+									</div>
+									<h3
+										class="font-display mb-3 text-xl font-bold text-gray-900 transition-colors group-hover:text-teal-700"
+									>
+										Salary Guide: What to Pay in 2025
+									</h3>
+									<p class="line-clamp-3 text-sm leading-relaxed text-gray-600">
+										Current market rates for nannies, house managers, and chefs in
+										Nairobi.
+									</p>
+								</div>
+								<div
+									class="mt-4 flex items-center text-sm font-medium text-teal-700 transition-transform group-hover:translate-x-1"
+								>
+									Read Article <i data-lucide="arrow-right" class="ml-2 h-4 w-4"></i>
+								</div>
+							</article>
+						</div>
+					</div>
+				</section>
+			</div>
+
+			<!-- CTA Section (Visible on both) -->
+			<section class="relative overflow-hidden bg-teal-900 py-24">
+				<!-- Decorative circles -->
+				<div
+					class="absolute top-0 right-0 -mt-20 -mr-20 h-96 w-96 rounded-full bg-teal-800 opacity-50 blur-3xl"
+				></div>
+				<div
+					class="absolute bottom-0 left-0 -mb-20 -ml-20 h-96 w-96 rounded-full bg-emerald-900 opacity-50 blur-3xl"
+				></div>
+
+				<div class="relative mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
+					<h2 class="font-display mb-6 text-4xl font-bold text-white sm:text-5xl">
+						Ready to find the help you deserve?
+					</h2>
+					<p class="mx-auto mb-10 max-w-2xl text-lg text-teal-100 sm:text-xl">
+						Join hundreds of Nairobi families who have found reliable, vetted caregivers
+						through Mjakazi Connect.
+					</p>
+					<div class="flex flex-col items-center justify-center gap-4 sm:flex-row">
+						<a
+							href="registration.html"
+							class="w-full rounded-lg bg-white px-8 py-4 font-bold text-teal-900 shadow-lg shadow-black/10 transition-colors hover:bg-teal-50 sm:w-auto"
+						>
+							Get Started Now
+						</a>
+						<button
+							class="w-full rounded-lg border border-teal-700 bg-transparent px-8 py-4 font-medium text-white transition-colors hover:bg-teal-800 sm:w-auto"
+						>
+							Browse Directory
+						</button>
+					</div>
+					<p class="mt-6 text-sm text-teal-400 opacity-80">
+						No credit card required to browse profiles.
+					</p>
+				</div>
+			</section>
+		</main>
+
+		<!-- Footer -->
+		<footer class="border-t border-gray-100 bg-white pt-20 pb-10">
+			<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+				<div class="mb-16 grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
+					<div class="col-span-2 lg:col-span-2">
+						<div class="mb-6 flex items-center">
+							<div
+								class="mr-3 flex h-8 w-8 items-center justify-center rounded-lg bg-teal-900"
+							>
+								<i data-lucide="shield-check" class="h-5 w-5 text-teal-50"></i>
+							</div>
+							<span class="font-display text-xl font-bold tracking-tight text-gray-900">
+								Mjakazi<span class="text-teal-600">Connect</span>
+							</span>
+						</div>
+						<p class="mb-6 max-w-xs text-sm leading-relaxed text-gray-500">
+							A secure, rule-driven platform connecting families with vetted domestic
+							professionals. Prioritizing safety, trust, and quality.
+						</p>
+						<div class="flex space-x-4">
+							<div
+								class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-100 transition-colors hover:bg-teal-100"
+							>
+								<span class="sr-only">Facebook</span>
+								<svg
+									class="h-4 w-4 text-gray-500"
+									fill="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"
+									/>
+								</svg>
+							</div>
+							<div
+								class="flex h-8 w-8 cursor-pointer items-center justify-center rounded-full bg-gray-100 transition-colors hover:bg-teal-100"
+							>
+								<span class="sr-only">Twitter</span>
+								<svg
+									class="h-4 w-4 text-gray-500"
+									fill="currentColor"
+									viewBox="0 0 24 24"
+								>
+									<path
+										d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
+									/>
+								</svg>
+							</div>
+						</div>
+					</div>
+
+					<div>
+						<h4 class="mb-4 font-bold text-gray-900">For Families</h4>
+						<ul class="space-y-3 text-sm text-gray-600">
+							<li>
+								<button onclick="switchTab('home')" class="text-left hover:text-teal-600">
+									Find Caregivers
+								</button>
+							</li>
+							<li>
+								<button
+									onclick="scrollToSection('pricing')"
+									class="text-left hover:text-teal-600"
+								>
+									Pricing
+								</button>
+							</li>
+							<li>
+								<button onclick="switchTab('blog')" class="text-left hover:text-teal-600">
+									Blog & Resources
+								</button>
+							</li>
+						</ul>
+					</div>
+
+					<div>
+						<h4 class="mb-4 font-bold text-gray-900">For Caregivers</h4>
+						<ul class="space-y-3 text-sm text-gray-600">
+							<li>
+								<a href="registration.html" class="hover:text-teal-600">Create Profile</a>
+							</li>
+							<li><a href="#" class="hover:text-teal-600">Verification Process</a></li>
+						</ul>
+					</div>
+
+					<div>
+						<h4 class="mb-4 font-bold text-gray-900">Legal</h4>
+						<ul class="space-y-3 text-sm text-gray-600">
+							<li><a href="#" class="hover:text-teal-600">Terms of Service</a></li>
+							<li><a href="#" class="hover:text-teal-600">Privacy Policy</a></li>
+							<li><a href="#" class="hover:text-teal-600">Code of Conduct</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div
+					class="flex flex-col items-center justify-between border-t border-gray-100 pt-8 md:flex-row"
+				>
+					<p class="text-sm text-gray-400">
+						© 2024 Mjakazi Connect. All rights reserved.
+					</p>
+					<p class="mt-2 text-sm text-gray-400 md:mt-0">Designed in Nairobi.</p>
+				</div>
+			</div>
+		</footer>
+
+		<!-- Logic -->
+		<script>
+			// Initialize Icons
+			lucide.createIcons();
+
+			// Scroll Helper
+			function scrollToSection(id) {
+				switchTab("home"); // Ensure we are on home view
+				setTimeout(() => {
+					const element = document.getElementById(id);
+					if (element) {
+						element.scrollIntoView({ behavior: "smooth" });
+					}
+				}, 50);
+			}
+
+			// Tab Switching
+			function switchTab(tab) {
+				const homeView = document.getElementById("home-view");
+				const blogView = document.getElementById("blog-view");
+				const navHome = document.getElementById("nav-home");
+
+				// Note: nav-blog ID usage in HTML removed, logic kept generic
+				// We only need to toggle active state on nav-home if it exists
+
+				if (tab === "home") {
+					homeView.classList.remove("hidden");
+					blogView.classList.add("hidden");
+
+					// Update nav state
+					if (navHome) {
+						navHome.classList.remove("text-gray-500", "hover:text-gray-900");
+						navHome.classList.add("text-teal-900");
+					}
+				} else {
+					homeView.classList.add("hidden");
+					blogView.classList.remove("hidden");
+
+					// Update nav state
+					if (navHome) {
+						navHome.classList.remove("text-teal-900");
+						navHome.classList.add("text-gray-500", "hover:text-gray-900");
+					}
+				}
+				// Only scroll to top if explicitly switching to home top, not specific sections
+				if (tab === "home" && !window.location.hash) {
+					window.scrollTo({ top: 0, behavior: "smooth" });
+				} else if (tab === "blog") {
+					window.scrollTo({ top: 0, behavior: "smooth" });
+				}
+			}
+
+			// Mobile Menu Toggle
+			function toggleMobileMenu() {
+				const menu = document.getElementById("mobile-menu");
+				const menuIcon = document.getElementById("menu-icon");
+				const closeIcon = document.getElementById("close-icon");
+
+				if (menu.classList.contains("hidden")) {
+					menu.classList.remove("hidden");
+					menuIcon.classList.add("hidden");
+					closeIcon.classList.remove("hidden");
+				} else {
+					menu.classList.add("hidden");
+					menuIcon.classList.remove("hidden");
+					closeIcon.classList.add("hidden");
+				}
+			}
+		</script>
+	</body>
+</html>
