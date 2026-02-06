@@ -1,6 +1,13 @@
 import headerHtml from "@/components/header.html?raw";
 import footerHtml from "@/components/footer.html?raw";
 
+// Types for Lucide when loaded via CDN in index.html
+declare global {
+	interface Window {
+		lucide?: { createIcons?: () => void };
+	}
+}
+
 function renderApp() {
 	const app = document.querySelector<HTMLDivElement>("#app");
 	if (!app) return;
@@ -114,4 +121,10 @@ function renderApp() {
 
 document.addEventListener("DOMContentLoaded", () => {
 	renderApp();
+	// Initialize Lucide icons after initial render, if available
+	try {
+		window.lucide?.createIcons?.();
+	} catch {
+		/* no-op: lucide is optional at runtime */
+	}
 });
