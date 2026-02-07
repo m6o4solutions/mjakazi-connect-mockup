@@ -5,6 +5,7 @@ import directoryHtml from "@/components/directory.html?raw";
 import workingsHtml from "@/components/workings.html?raw";
 import pricingHtml from "@/components/pricing.html?raw";
 import testimonialsHtml from "@/components/testimonials.html?raw";
+import blogPreviewHtml from "@/components/blog-preview.html?raw";
 import footerHtml from "@/components/footer.html?raw";
 
 // Types for Lucide when loaded via CDN in index.html
@@ -27,8 +28,9 @@ function renderApp() {
           ${workingsHtml}
           ${pricingHtml}
           ${testimonialsHtml}
+          ${blogPreviewHtml}
           ${footerHtml}
-         </div>
+       </div>
     `;
 
 	const year = document.querySelector<HTMLElement>("#year");
