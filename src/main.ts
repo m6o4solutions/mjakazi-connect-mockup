@@ -1,5 +1,6 @@
 import headerHtml from "@/components/header.html?raw";
 import heroHtml from "@/components/hero.html?raw";
+import featuresHtml from "@/components/features.html?raw";
 import footerHtml from "@/components/footer.html?raw";
 
 // Types for Lucide when loaded via CDN in index.html
@@ -16,8 +17,9 @@ function renderApp() {
 	app.innerHTML = `
       <div class="min-h-dvh bg-zinc-50 text-zinc-950">
          ${headerHtml}
-         ${heroHtml}            
-			${footerHtml}
+         ${heroHtml}
+         ${featuresHtml}
+         ${footerHtml}
 		</div>
 	`;
 
