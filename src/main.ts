@@ -3,6 +3,7 @@ import heroHtml from "@/components/hero.html?raw";
 import featuresHtml from "@/components/features.html?raw";
 import directoryHtml from "@/components/directory.html?raw";
 import workingsHtml from "@/components/workings.html?raw";
+import pricingHtml from "@/components/pricing.html?raw";
 import footerHtml from "@/components/footer.html?raw";
 
 // Types for Lucide when loaded via CDN in index.html
@@ -23,6 +24,7 @@ function renderApp() {
           ${featuresHtml}
           ${directoryHtml}
           ${workingsHtml}
+          ${pricingHtml}
           ${footerHtml}
         </div>
 	`;
@@ -31,8 +33,9 @@ function renderApp() {
 	if (year) year.textContent = String(new Date().getFullYear());
 
 	// Mobile menu functionality
-	const mobileMenuToggle =
-		document.querySelector<HTMLButtonElement>("#mobile-menu-toggle");
+	const mobileMenuToggle = document.querySelector<HTMLButtonElement>(
+		"#mobile-menu-toggle",
+	);
 	const mobileMenu = document.querySelector<HTMLDivElement>("#mobile-menu");
 	const menuIcon = document.querySelector<HTMLElement>("#menu-icon");
 	const closeIcon = document.querySelector<HTMLElement>("#close-icon");
