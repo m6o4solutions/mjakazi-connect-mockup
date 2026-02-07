@@ -1,6 +1,13 @@
 import headerHtml from "@/components/header.html?raw";
 import heroHtml from "@/components/hero.html?raw";
+import featuresHtml from "@/components/features.html?raw";
+import directoryHtml from "@/components/directory.html?raw";
+import workingsHtml from "@/components/workings.html?raw";
+import pricingHtml from "@/components/pricing.html?raw";
+import testimonialsHtml from "@/components/testimonials.html?raw";
+import blogPreviewHtml from "@/components/blog-preview.html?raw";
 import footerHtml from "@/components/footer.html?raw";
+import ctaHtml from "@/components/cta.html?raw";
 
 // Types for Lucide when loaded via CDN in index.html
 declare global {
@@ -14,19 +21,25 @@ function renderApp() {
 	if (!app) return;
 
 	app.innerHTML = `
-      <div class="min-h-dvh bg-zinc-50 text-zinc-950">
-         ${headerHtml}
-         ${heroHtml}            
-			${footerHtml}
-		</div>
-	`;
+       <div class="min-h-dvh bg-zinc-50 text-zinc-950">
+          ${headerHtml}
+          ${heroHtml}
+          ${featuresHtml}
+          ${directoryHtml}
+          ${workingsHtml}
+          ${pricingHtml}
+          ${testimonialsHtml}
+          ${blogPreviewHtml}
+          ${ctaHtml}
+          ${footerHtml}
+       </div>
+    `;
 
 	const year = document.querySelector<HTMLElement>("#year");
 	if (year) year.textContent = String(new Date().getFullYear());
 
 	// Mobile menu functionality
-	const mobileMenuToggle =
-		document.querySelector<HTMLButtonElement>("#mobile-menu-toggle");
+	const mobileMenuToggle = document.querySelector<HTMLButtonElement>("#mobile-menu-toggle");
 	const mobileMenu = document.querySelector<HTMLDivElement>("#mobile-menu");
 	const menuIcon = document.querySelector<HTMLElement>("#menu-icon");
 	const closeIcon = document.querySelector<HTMLElement>("#close-icon");
