@@ -11,6 +11,7 @@ export default defineConfig({
 			input: {
 				main: resolve(__dirname, "index.html"),
 				blogs: resolve(__dirname, "blogs.html"),
+				"terms-of-service": resolve(__dirname, "terms-of-service.html"),
 			},
 		},
 	},
