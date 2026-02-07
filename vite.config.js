@@ -12,6 +12,7 @@ export default defineConfig({
 				main: resolve(__dirname, "index.html"),
 				blogs: resolve(__dirname, "blogs.html"),
 				"terms-of-service": resolve(__dirname, "terms-of-service.html"),
+				"privacy-policy": resolve(__dirname, "privacy-policy.html"),
 			},
 		},
 	},
