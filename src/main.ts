@@ -2,6 +2,7 @@ import headerHtml from "@/components/header.html?raw";
 import heroHtml from "@/components/hero.html?raw";
 import featuresHtml from "@/components/features.html?raw";
 import directoryHtml from "@/components/directory.html?raw";
+import workingsHtml from "@/components/workings.html?raw";
 import footerHtml from "@/components/footer.html?raw";
 
 // Types for Lucide when loaded via CDN in index.html
@@ -21,8 +22,9 @@ function renderApp() {
           ${heroHtml}
           ${featuresHtml}
           ${directoryHtml}
+          ${workingsHtml}
           ${footerHtml}
-		</div>
+        </div>
 	`;
 
 	const year = document.querySelector<HTMLElement>("#year");
