@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mjakazi Connect | Caregiver Registration</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            900: '#022c22', 
+                            800: '#064e3b', 
+                            700: '#047857',
+                            600: '#059669',
+                            500: '#10b981', 
+                            100: '#d1fae5',
+                            50: '#ecfdf5',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased min-h-screen flex flex-col">
+
+    <!-- Navbar (Simplified for Auth Pages) -->
+    <header class="bg-white border-b border-gray-200 h-16 flex items-center justify-between px-6 lg:px-12 sticky top-0 z-10">
+        <div class="flex items-center gap-2 font-bold text-xl tracking-tight text-brand-900">
+            <i class="ph-fill ph-house-line text-brand-600 text-2xl"></i>
+            <span>Mjakazi</span>
+        </div>
+        <div class="text-sm">
+            <span class="text-gray-500 hidden sm:inline">Already have an account?</span>
+            <a href="#" class="font-medium text-brand-700 hover:text-brand-800 ml-1">Log In</a>
+        </div>
+    </header>
+
+    <main class="flex-1 flex items-center justify-center p-4 lg:p-8">
+        
+        <div class="w-full max-w-5xl bg-white rounded-2xl shadow-xl overflow-hidden flex flex-col lg:flex-row">
+            
+            <!-- Left Side: Value Prop (Hidden on small mobile, visible on desktop) -->
+            <div class="lg:w-2/5 bg-brand-900 text-white p-8 lg:p-12 flex flex-col justify-between relative overflow-hidden">
+                <!-- Decorative Circle -->
+                <div class="absolute -top-10 -left-10 w-40 h-40 bg-brand-700 rounded-full opacity-30 blur-3xl"></div>
+                <div class="absolute bottom-10 right-10 w-60 h-60 bg-brand-600 rounded-full opacity-20 blur-3xl"></div>
+
+                <div class="relative z-10">
+                    <h2 class="text-3xl font-bold mb-6">Join Kenya's most trusted caregiver network.</h2>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                <i class="ph-fill ph-shield-check text-xl text-brand-300"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white">Verified Profile Badge</h3>
+                                <p class="text-sm text-brand-200 leading-relaxed mt-1">Stand out to families by verifying your ID and Good Conduct Certificate.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                <i class="ph-fill ph-money text-xl text-brand-300"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white">Fair Pay & Direct Hiring</h3>
+                                <p class="text-sm text-brand-200 leading-relaxed mt-1">Connect directly with families. No middleman taking a cut of your salary.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center flex-shrink-0">
+                                <i class="ph-fill ph-bell-ringing text-xl text-brand-300"></i>
+                            </div>
+                            <div>
+                                <h3 class="font-semibold text-white">Instant Job Alerts</h3>
+                                <p class="text-sm text-brand-200 leading-relaxed mt-1">Get SMS or WhatsApp notifications when a job matches your skills.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="relative z-10 mt-12 pt-8 border-t border-brand-800">
+                    <div class="flex items-center gap-3">
+                        <div class="flex -space-x-2">
+                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-brand-900" src="https://i.pravatar.cc/150?img=28" alt=""/>
+                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-brand-900" src="https://i.pravatar.cc/150?img=32" alt=""/>
+                            <img class="inline-block h-8 w-8 rounded-full ring-2 ring-brand-900" src="https://i.pravatar.cc/150?img=44" alt=""/>
+                        </div>
+                        <p class="text-xs text-brand-300 font-medium">Join 500+ caregivers today</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Side: Registration Form -->
+            <div class="lg:w-3/5 p-6 lg:p-12 bg-white">
+                
+                <!-- Progress Stepper -->
+                <div class="mb-8">
+                    <div class="flex items-center justify-between text-xs font-medium text-gray-500 mb-2">
+                        <span class="text-brand-700">Step 1: Personal Details</span>
+                        <span>Step 2: Experience</span>
+                        <span>Step 3: Verification</span>
+                    </div>
+                    <div class="w-full bg-gray-100 rounded-full h-2">
+                        <div class="bg-brand-600 h-2 rounded-full w-1/3 shadow-sm"></div>
+                    </div>
+                </div>
+
+                <div class="mb-6">
+                    <h1 class="text-2xl font-bold text-gray-900">Create your account</h1>
+                    <p class="text-gray-500 mt-1">Let's start with your basic information.</p>
+                </div>
+
+                <form class="space-y-5">
+                    
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+                        <!-- First Name -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+                            <input type="text" placeholder="e.g. Mary" class="w-full h-12 px-4 rounded-lg border border-gray-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none transition-all placeholder-gray-400">
+                        </div>
+
+                        <!-- Last Name -->
+                        <div>
+                            <label class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+                            <input type="text" placeholder="e.g. Wanjiku" class="w-full h-12 px-4 rounded-lg border border-gray-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none transition-all placeholder-gray-400">
+                        </div>
+                    </div>
+
+                    <!-- Phone Number -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Phone Number (M-Pesa)</label>
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
+                                <span class="text-gray-500 font-medium text-sm">+254</span>
+                            </div>
+                            <input type="tel" placeholder="7XX XXX XXX" class="w-full h-12 pl-14 pr-4 rounded-lg border border-gray-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none transition-all placeholder-gray-400">
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1">We will use this to verify your account.</p>
+                    </div>
+
+                    <!-- Primary Role -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">What is your primary job role?</label>
+                        <div class="relative">
+                            <i class="ph ph-briefcase absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
+                            <select class="w-full h-12 pl-11 pr-4 rounded-lg border border-gray-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none transition-all bg-white appearance-none cursor-pointer">
+                                <option value="" disabled selected>Select a role...</option>
+                                <option>Nanny (Children 0-5yrs)</option>
+                                <option>House Manager / Housekeeper</option>
+                                <option>Chef / Cook</option>
+                                <option>Driver</option>
+                                <option>Gardener</option>
+                                <option>Caregiver for Elderly</option>
+                            </select>
+                            <i class="ph ph-caret-down absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 pointer-events-none"></i>
+                        </div>
+                    </div>
+
+                    <!-- Location -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Current Location (Estate/Town)</label>
+                        <div class="relative">
+                            <i class="ph ph-map-pin absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
+                            <input type="text" placeholder="e.g. Nairobi, Kawangware" class="w-full h-12 pl-11 pr-4 rounded-lg border border-gray-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none transition-all placeholder-gray-400">
+                        </div>
+                    </div>
+
+                    <!-- Password -->
+                    <div>
+                        <label class="block text-sm font-medium text-gray-700 mb-1">Create Password</label>
+                        <div class="relative">
+                            <i class="ph ph-lock-key absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 text-lg"></i>
+                            <input type="password" placeholder="••••••••" class="w-full h-12 pl-11 pr-4 rounded-lg border border-gray-300 focus:border-brand-500 focus:ring-2 focus:ring-brand-100 outline-none transition-all placeholder-gray-400">
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="button" class="w-full h-12 bg-brand-800 text-white font-semibold rounded-lg hover:bg-brand-900 transition-colors shadow-lg shadow-brand-900/10 flex items-center justify-center gap-2">
+                            <span>Continue to Experience</span>
+                            <i class="ph-bold ph-arrow-right"></i>
+                        </button>
+                    </div>
+
+                    <p class="text-xs text-center text-gray-500 mt-4 leading-relaxed px-4">
+                        By clicking "Continue", you agree to Mjakazi Connect's <a href="#" class="text-brand-700 underline">Terms of Service</a> and <a href="#" class="text-brand-700 underline">Privacy Policy</a>.
+                    </p>
+
+                </form>
+            </div>
+        </div>
+        
+        <!-- Trust Footer (Mobile Only) -->
+        <div class="lg:hidden mt-8 text-center px-6">
+            <p class="text-xs text-gray-400 font-medium uppercase tracking-widest mb-3">Trusted By Families In</p>
+            <div class="flex flex-wrap justify-center gap-4 text-sm text-gray-500 font-medium">
+                <span>Karen</span> • <span>Kilimani</span> • <span>Westlands</span> • <span>Lavington</span>
+            </div>
+        </div>
+
+    </main>
+
+</body>
+</html>
