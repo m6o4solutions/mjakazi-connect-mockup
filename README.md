@@ -1,14 +1,14 @@
 # Mjakazi Connect
 
-A subscription-based caregiver discovery platform connecting families with domestic
-caregivers through curated profiles, controlled access, and administrative oversight.
+A subscription-based contractor discovery platform connecting families with domestic
+contractors through curated profiles, controlled access, and administrative oversight.
 
 ---
 
 ## Overview
 
 Mjakazi Connect operates as a controlled, trustworthy environment for matching families
-with qualified domestic caregivers. The platform balances public visibility of caregiver
+with qualified domestic contractors. The platform balances public visibility of contractor
 profiles with subscription-gated contact information, ensuring quality through active
 administrative moderation.
 
@@ -21,8 +21,8 @@ experiences, and trust over experimentation.
 
 The goals of this project are to:
 
-- Enable families to discover and evaluate caregivers efficiently
-- Provide caregivers with professional visibility and job opportunities
+- Enable families to discover and evaluate contractors efficiently
+- Provide contractors with professional visibility and job opportunities
 - Maintain platform quality through active moderation and controlled access
 - Generate sustainable revenue through subscription-based contact unlocking and job
   postings
@@ -31,12 +31,12 @@ The goals of this project are to:
 
 ## Features
 
-- **Curated Caregiver Directory**: Browse profiles with skills, experience, and
+- **Curated Contractor Directory**: Browse profiles with skills, experience, and
   availability
 - **Subscription-Based Access**: Unlock contact details through paid subscriptions
-- **Job Posting Capabilities**: Families can post positions directly to caregivers
+- **Job Posting Capabilities**: Families can post positions directly to contractors
 - **Administrative Moderation**: Quality control through profile approval and oversight
-- **Role-Based Access Control**: Distinct experiences for families, caregivers, and
+- **Role-Based Access Control**: Distinct experiences for families, contractors, and
   administrators
 - **Secure Authentication**: Clerk-based user management with role enforcement
 
@@ -61,8 +61,8 @@ Refer to deployment documentation for production setup on Contabo VPS infrastruc
 
 This platform serves:
 
-- **Families**: Search caregivers, unlock contacts, post job opportunities
-- **Caregivers**: Create profiles, showcase skills, receive job notifications
+- **Families**: Search contractors, unlock contacts, post job opportunities
+- **Contractors**: Create profiles, showcase skills, receive job notifications
 - **Administrators**: Moderate profiles, manage subscriptions, oversee platform quality
 
 ---
@@ -72,7 +72,7 @@ This platform serves:
 Core areas for configuration:
 
 - Subscription pricing models (PayPal/Stripe integration)
-- Caregiver profile fields and validation rules
+- Contractor profile fields and validation rules
 - Search and filtering logic
 - Email templates (Resend integration)
 - Role permissions and access tiers
