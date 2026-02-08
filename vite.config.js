@@ -11,6 +11,7 @@ export default defineConfig({
 			input: {
 				blogs: resolve(__dirname, "blogs.html"),
 				directory: resolve(__dirname, "directory.html"),
+				login: resolve(__dirname, "login.html"),
 				main: resolve(__dirname, "index.html"),
 				"privacy-policy": resolve(__dirname, "privacy-policy.html"),
 				registration: resolve(__dirname, "registration.html"),

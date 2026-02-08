@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mjakazi Connect | Post a Job</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            900: '#022c22', 
+                            800: '#064e3b', 
+                            700: '#047857',
+                            600: '#059669',
+                            500: '#10b981', 
+                            100: '#d1fae5',
+                            50: '#ecfdf5',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased h-screen flex overflow-hidden relative">
+
+    <!-- Mobile Overlay -->
+    <div id="sidebar-overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-20 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-30 w-64 bg-white border-r border-gray-200 transform -translate-x-full transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-auto flex flex-col flex-shrink-0">
+        <!-- Logo Area -->
+        <div class="h-16 flex items-center px-6 border-b border-gray-100 justify-between lg:justify-start">
+            <div class="flex items-center gap-2 font-bold text-xl tracking-tight text-brand-900">
+                <i class="ph-fill ph-house-line text-brand-600 text-2xl"></i>
+                <span>Mjakazi</span>
+            </div>
+            <button onclick="toggleSidebar()" class="lg:hidden text-gray-400 hover:text-gray-600">
+                <i class="ph ph-x text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 overflow-y-auto py-6 px-3 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-colors group">
+                <i class="ph ph-squares-four text-xl text-gray-400 group-hover:text-gray-600"></i>
+                Overview
+            </a>
+            
+            <div class="pt-4 pb-2 px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Hiring</div>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-colors group">
+                <i class="ph ph-magnifying-glass text-xl text-gray-400 group-hover:text-gray-600"></i>
+                Find Caregivers
+            </a>
+            <!-- Active State for Job Posts -->
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 bg-brand-50 text-brand-700 rounded-lg font-medium group">
+                <i class="ph-fill ph-briefcase text-xl"></i>
+                My Job Posts
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-colors group">
+                <i class="ph ph-lock-open text-xl text-gray-400 group-hover:text-gray-600"></i>
+                Unlocked Contacts
+            </a>
+
+            <div class="pt-4 pb-2 px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Account</div>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-colors group">
+                <i class="ph ph-credit-card text-xl text-gray-400 group-hover:text-gray-600"></i>
+                Billing & Plan
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-colors group">
+                <i class="ph ph-gear text-xl text-gray-400 group-hover:text-gray-600"></i>
+                Settings
+            </a>
+        </nav>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col overflow-hidden bg-gray-50 transition-all duration-300">
+        
+        <!-- Header -->
+        <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 lg:px-8">
+            <div class="flex items-center gap-3">
+                <button onclick="toggleSidebar()" class="lg:hidden p-2 text-gray-500 hover:text-gray-700 rounded-md">
+                    <i class="ph ph-list text-2xl"></i>
+                </button>
+                <nav class="flex text-sm font-medium text-gray-500">
+                    <a href="#" class="hover:text-gray-700">Jobs</a>
+                    <span class="mx-2">/</span>
+                    <span class="text-gray-900">New Posting</span>
+                </nav>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <div class="text-right hidden sm:block">
+                    <p class="text-sm font-medium text-gray-900">The Njoroge Family</p>
+                </div>
+                <img src="https://i.pravatar.cc/150?img=60" alt="Family Profile" class="w-9 h-9 rounded-full border border-gray-200">
+            </div>
+        </header>
+
+        <!-- Content Body -->
+        <div class="flex-1 overflow-y-auto p-4 lg:p-8">
+            
+            <div class="max-w-4xl mx-auto">
+                
+                <!-- Page Title -->
+                <div class="mb-8">
+                    <h1 class="text-2xl font-bold text-gray-900">Post a New Job</h1>
+                    <p class="text-gray-500 mt-1">Create a detailed job post to attract the best caregivers. All posts are reviewed by our admin team.</p>
+                </div>
+
+                <!-- Form Card -->
+                <div class="bg-white rounded-xl border border-gray-200 shadow-sm overflow-hidden">
+                    
+                    <form>
+                        <!-- Section 1: The Basics -->
+                        <div class="p-6 lg:p-8 border-b border-gray-100">
+                            <h2 class="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center text-xs">1</div>
+                                Role Details
+                            </h2>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="md:col-span-2">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Job Title <span class="text-red-500">*</span></label>
+                                    <input type="text" placeholder="e.g. Experienced Nanny for 2 Toddlers" class="w-full rounded-lg border-gray-300 border px-3 py-2.5 text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition shadow-sm">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Role Category <span class="text-red-500">*</span></label>
+                                    <select class="w-full rounded-lg border-gray-300 border px-3 py-2.5 text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition shadow-sm bg-white">
+                                        <option>Nanny</option>
+                                        <option>Housekeeper</option>
+                                        <option>Chef / Cook</option>
+                                        <option>Driver</option>
+                                        <option>Gardener</option>
+                                        <option>Elderly Care</option>
+                                    </select>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Job Type <span class="text-red-500">*</span></label>
+                                    <select class="w-full rounded-lg border-gray-300 border px-3 py-2.5 text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition shadow-sm bg-white">
+                                        <option>Full-Time</option>
+                                        <option>Part-Time</option>
+                                        <option>Temporary / One-off</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 2: Logistics -->
+                        <div class="p-6 lg:p-8 border-b border-gray-100">
+                            <h2 class="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center text-xs">2</div>
+                                Location & Arrangement
+                            </h2>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Location (Estate/Area) <span class="text-red-500">*</span></label>
+                                    <input type="text" placeholder="e.g. Kilimani, Near Yaya Center" class="w-full rounded-lg border-gray-300 border px-3 py-2.5 text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition shadow-sm">
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Start Date</label>
+                                    <input type="date" class="w-full rounded-lg border-gray-300 border px-3 py-2.5 text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition shadow-sm text-gray-500">
+                                </div>
+
+                                <div class="md:col-span-2">
+                                    <label class="block text-sm font-medium text-gray-700 mb-3">Living Arrangement <span class="text-red-500">*</span></label>
+                                    <div class="flex flex-col sm:flex-row gap-4">
+                                        <label class="relative flex items-start p-4 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-50 hover:border-brand-300 transition-all has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50 flex-1">
+                                            <div class="min-w-0 flex-1 text-sm">
+                                                <div class="font-medium text-gray-900">Live-Out (Daybug)</div>
+                                                <p class="text-gray-500 mt-1">Caregiver commutes daily.</p>
+                                            </div>
+                                            <input name="living_type" type="radio" class="mt-1 h-4 w-4 border-gray-300 text-brand-600 focus:ring-brand-500" checked>
+                                        </label>
+                                        <label class="relative flex items-start p-4 rounded-xl border border-gray-200 cursor-pointer hover:bg-gray-50 hover:border-brand-300 transition-all has-[:checked]:border-brand-500 has-[:checked]:bg-brand-50 flex-1">
+                                            <div class="min-w-0 flex-1 text-sm">
+                                                <div class="font-medium text-gray-900">Live-In</div>
+                                                <p class="text-gray-500 mt-1">Accommodation provided.</p>
+                                            </div>
+                                            <input name="living_type" type="radio" class="mt-1 h-4 w-4 border-gray-300 text-brand-600 focus:ring-brand-500">
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Section 3: Requirements -->
+                        <div class="p-6 lg:p-8">
+                            <h2 class="text-lg font-semibold text-gray-900 mb-6 flex items-center gap-2">
+                                <div class="w-6 h-6 rounded-full bg-brand-100 text-brand-700 flex items-center justify-center text-xs">3</div>
+                                Requirements & Offer
+                            </h2>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Monthly Salary Offer (Ksh) <span class="text-red-500">*</span></label>
+                                    <div class="flex items-center gap-2">
+                                        <select class="w-full rounded-lg border-gray-300 border px-3 py-2.5 text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition shadow-sm bg-white">
+                                            <option>10,000 - 15,000</option>
+                                            <option>15,000 - 20,000</option>
+                                            <option>20,000 - 25,000</option>
+                                            <option>25,000 - 35,000</option>
+                                            <option>35,000+</option>
+                                            <option>Negotiable</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Minimum Experience</label>
+                                    <select class="w-full rounded-lg border-gray-300 border px-3 py-2.5 text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition shadow-sm bg-white">
+                                        <option>Any Experience</option>
+                                        <option>1+ Years</option>
+                                        <option>3+ Years</option>
+                                        <option>5+ Years</option>
+                                    </select>
+                                </div>
+
+                                <div class="md:col-span-2">
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Job Description <span class="text-red-500">*</span></label>
+                                    <textarea rows="5" placeholder="Describe the daily duties, the family environment, and any specific requirements (e.g. 'Must love dogs', 'Cooking required')..." class="w-full rounded-lg border-gray-300 border px-3 py-2.5 text-sm focus:border-brand-500 focus:ring-1 focus:ring-brand-500 outline-none transition shadow-sm"></textarea>
+                                    <p class="text-xs text-gray-500 mt-1 text-right">0/500 characters</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Footer Actions -->
+                        <div class="p-6 lg:p-8 bg-gray-50 border-t border-gray-200 flex flex-col-reverse sm:flex-row items-center justify-between gap-4">
+                            
+                            <div class="flex items-start gap-3 max-w-sm">
+                                <i class="ph-fill ph-shield-check text-brand-600 text-xl flex-shrink-0 mt-0.5"></i>
+                                <p class="text-xs text-gray-500 leading-snug">
+                                    <span class="font-semibold text-gray-700">Admin Review:</span> Your post will be reviewed by the Mjakazi team before becoming visible to caregivers (typically within 2 hours).
+                                </p>
+                            </div>
+
+                            <div class="flex w-full sm:w-auto gap-3">
+                                <button type="button" class="w-full sm:w-auto px-5 py-2.5 rounded-lg border border-gray-300 bg-white text-gray-700 font-medium text-sm hover:bg-gray-50 transition-colors">
+                                    Save Draft
+                                </button>
+                                <button type="button" class="w-full sm:w-auto px-5 py-2.5 rounded-lg bg-brand-800 text-white font-medium text-sm hover:bg-brand-900 transition-colors shadow-sm flex items-center justify-center gap-2">
+                                    <span>Submit for Review</span>
+                                    <i class="ph-bold ph-arrow-right"></i>
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        function toggleSidebar() {
+            sidebar.classList.toggle('-translate-x-full');
+            overlay.classList.toggle('opacity-0');
+            overlay.classList.toggle('pointer-events-none');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+I would like to create a new page named login.html and it should have the following attributes:
+1. Have a header section with the title of "Log In" and a brief description of the page like the blogs page.
+2. It should have the common header and footer from the homepage.
+3. Update the @/vite.config.js with the details of this page in the same way as the directory.html page.
+4. Initialize lucide icons on the login.html page.
+5. All header links with the text "Log In" should be updated to point to the login.html page.
+6. The main section should contain a 3 x 1 grid of cards with the following attributes
+   i. The left card will have a placeholder for an image with the heading "Log In as Administrator". The body text will be a brief description of the choice. Finally the CTA button will be "Log In" (Green/Emerald).
+   ii. The middle card will have a placeholder for an image with the heading "Log In as Family Member". The body text will be a brief description of the choice. Finally the CTA button will be "Log In" (Green/Emerald).
+   iii. The right card will have a placeholder for an image with the heading "Log In as Domestic Contractor". The body text will be a brief description of the choice. Finally the CTA button will be "Log In" (Green/Emerald).
