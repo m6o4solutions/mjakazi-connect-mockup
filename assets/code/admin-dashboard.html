@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mjakazi Connect | Administration</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons (Clean, professional icons) -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Chart.js for dummy charts -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            900: '#022c22', // Deepest green (Sidebar)
+                            800: '#064e3b', // Primary buttons/actions
+                            700: '#047857',
+                            600: '#059669',
+                            500: '#10b981', // Accents
+                            50: '#ecfdf5',  // Backgrounds
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased h-screen flex overflow-hidden relative">
+
+    <!-- Mobile Overlay (Backdrop) -->
+    <div id="sidebar-overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-20 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"></div>
+
+    <!-- Sidebar -->
+    <!-- 
+      Mobile behavior: Fixed, z-30, off-canvas (-translate-x-full)
+      Desktop behavior: Static, on-canvas (translate-x-0)
+    -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-30 w-64 bg-brand-900 text-white transform -translate-x-full transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-auto flex flex-col flex-shrink-0">
+        <!-- Logo Area -->
+        <div class="h-16 flex items-center px-6 border-b border-brand-800 bg-brand-900 justify-between lg:justify-start">
+            <div class="flex items-center gap-2 font-bold text-xl tracking-tight">
+                <i class="ph-fill ph-house-line text-brand-500 text-2xl"></i>
+                <span>Mjakazi</span>
+            </div>
+            <!-- Close button for mobile -->
+            <button onclick="toggleSidebar()" class="lg:hidden text-gray-400 hover:text-white">
+                <i class="ph ph-x text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 overflow-y-auto py-4">
+            <div class="px-4 mb-2 text-xs font-semibold text-brand-500 uppercase tracking-wider">Platform</div>
+            <ul class="space-y-1 mb-6">
+                <li>
+                    <a href="#" class="flex items-center gap-3 px-4 py-2.5 bg-brand-800 text-white rounded-lg mx-2 border-l-4 border-brand-500">
+                        <i class="ph ph-squares-four text-lg"></i>
+                        <span class="font-medium">Dashboard</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center gap-3 px-4 py-2.5 text-gray-300 hover:text-white hover:bg-brand-800 rounded-lg mx-2 transition-colors">
+                        <i class="ph ph-users text-lg"></i>
+                        <span class="font-medium">Caregivers</span>
+                        <span class="ml-auto bg-brand-600 text-white text-xs py-0.5 px-2 rounded-full">12</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center gap-3 px-4 py-2.5 text-gray-300 hover:text-white hover:bg-brand-800 rounded-lg mx-2 transition-colors">
+                        <i class="ph ph-house-simple text-lg"></i>
+                        <span class="font-medium">Families</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center gap-3 px-4 py-2.5 text-gray-300 hover:text-white hover:bg-brand-800 rounded-lg mx-2 transition-colors">
+                        <i class="ph ph-briefcase text-lg"></i>
+                        <span class="font-medium">Jobs</span>
+                    </a>
+                </li>
+            </ul>
+
+            <div class="px-4 mb-2 text-xs font-semibold text-brand-500 uppercase tracking-wider">Administration</div>
+            <ul class="space-y-1">
+                <li>
+                    <a href="#" class="flex items-center gap-3 px-4 py-2.5 text-gray-300 hover:text-white hover:bg-brand-800 rounded-lg mx-2 transition-colors">
+                        <i class="ph ph-chart-bar text-lg"></i>
+                        <span class="font-medium">Analytics</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center gap-3 px-4 py-2.5 text-gray-300 hover:text-white hover:bg-brand-800 rounded-lg mx-2 transition-colors">
+                        <i class="ph ph-shield-check text-lg"></i>
+                        <span class="font-medium">Moderation Logs</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="flex items-center gap-3 px-4 py-2.5 text-gray-300 hover:text-white hover:bg-brand-800 rounded-lg mx-2 transition-colors">
+                        <i class="ph ph-gear text-lg"></i>
+                        <span class="font-medium">Settings</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <!-- User Profile (Bottom Sidebar) -->
+        <div class="p-4 border-t border-brand-800">
+            <div class="flex items-center gap-3">
+                <img src="https://i.pravatar.cc/150?img=11" alt="Admin User" class="w-9 h-9 rounded-full border border-brand-600">
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-white truncate">Michael M.</p>
+                    <p class="text-xs text-brand-400 truncate">Super Admin</p>
+                </div>
+                <button class="text-gray-400 hover:text-white"><i class="ph ph-sign-out text-xl"></i></button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col overflow-hidden bg-gray-50 transition-all duration-300">
+        
+        <!-- Top Header -->
+        <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 lg:px-8">
+            <div class="flex items-center gap-3">
+                <!-- Mobile Menu Button -->
+                <button onclick="toggleSidebar()" class="lg:hidden p-2 text-gray-500 hover:text-gray-700 focus:outline-none rounded-md hover:bg-gray-100">
+                    <i class="ph ph-list text-2xl"></i>
+                </button>
+                <h1 class="text-xl font-semibold text-gray-800 truncate">Dashboard</h1>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <!-- Search Bar (Hidden on small mobile) -->
+                <div class="relative hidden md:block">
+                    <i class="ph ph-magnifying-glass absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input type="text" placeholder="Search profiles, jobs..." class="pl-9 pr-4 py-2 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-brand-500 w-64">
+                </div>
+                <!-- Mobile Search Icon (Placeholder) -->
+                <button class="md:hidden p-2 text-gray-500 hover:bg-gray-100 rounded-full">
+                    <i class="ph ph-magnifying-glass text-xl"></i>
+                </button>
+
+                <button class="relative p-2 text-gray-500 hover:bg-gray-100 rounded-full">
+                    <i class="ph ph-bell text-xl"></i>
+                    <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Scrollable Content Area -->
+        <div class="flex-1 overflow-y-auto p-4 lg:p-8">
+            
+            <!-- Stats Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mb-8">
+                <!-- Stat Card 1 -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-500 text-sm font-medium">Pending Approvals</span>
+                        <div class="p-2 bg-orange-100 text-orange-600 rounded-lg">
+                            <i class="ph ph-user-list text-lg"></i>
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <span class="text-3xl font-bold text-gray-900">12</span>
+                        <span class="text-sm text-gray-500 ml-2">Caregivers awaiting review</span>
+                    </div>
+                </div>
+
+                <!-- Stat Card 2 -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-500 text-sm font-medium">Active Subscriptions</span>
+                        <div class="p-2 bg-brand-100 text-brand-700 rounded-lg">
+                            <i class="ph ph-crown text-lg"></i>
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <span class="text-3xl font-bold text-gray-900">148</span>
+                        <span class="text-sm text-green-600 ml-2 flex items-center gap-1">
+                            <i class="ph-bold ph-trend-up"></i> +12%
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Stat Card 3 -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-500 text-sm font-medium">Unlocked Contacts</span>
+                        <div class="p-2 bg-blue-100 text-blue-600 rounded-lg">
+                            <i class="ph ph-address-book text-lg"></i>
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <span class="text-3xl font-bold text-gray-900">842</span>
+                        <span class="text-sm text-gray-500 ml-2">Total connections made</span>
+                    </div>
+                </div>
+
+                <!-- Stat Card 4 -->
+                <div class="bg-white p-5 rounded-xl border border-gray-200 shadow-sm flex flex-col">
+                    <div class="flex items-center justify-between mb-4">
+                        <span class="text-gray-500 text-sm font-medium">Total Verified Pros</span>
+                        <div class="p-2 bg-purple-100 text-purple-600 rounded-lg">
+                            <i class="ph ph-certificate text-lg"></i>
+                        </div>
+                    </div>
+                    <div class="mt-auto">
+                        <span class="text-3xl font-bold text-gray-900">324</span>
+                        <span class="text-sm text-gray-500 ml-2">Available for hire</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Dashboard Layout: Two Columns (2/3 + 1/3) -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Left Column: Pending Approvals Queue -->
+                <div class="lg:col-span-2 space-y-8">
+                    
+                    <div class="bg-white rounded-xl border border-gray-200 shadow-sm">
+                        <div class="p-5 border-b border-gray-100 flex items-center justify-between">
+                            <h2 class="font-semibold text-gray-800 flex items-center gap-2">
+                                <i class="ph-fill ph-warning-circle text-orange-500"></i>
+                                Caregiver Verification Queue
+                            </h2>
+                            <button class="text-sm text-brand-600 hover:text-brand-800 font-medium">View All</button>
+                        </div>
+                        
+                        <div class="overflow-x-auto">
+                            <table class="w-full text-left border-collapse min-w-[600px]">
+                                <thead>
+                                    <tr class="bg-gray-50 text-gray-500 text-xs uppercase tracking-wider">
+                                        <th class="px-5 py-3 font-medium">Applicant</th>
+                                        <th class="px-5 py-3 font-medium">Role</th>
+                                        <th class="px-5 py-3 font-medium">Submitted</th>
+                                        <th class="px-5 py-3 font-medium">Status</th>
+                                        <th class="px-5 py-3 font-medium text-right">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y divide-gray-100 text-sm">
+                                    <!-- Row 1 -->
+                                    <tr class="hover:bg-gray-50 transition-colors">
+                                        <td class="px-5 py-4">
+                                            <div class="flex items-center gap-3">
+                                                <img src="https://i.pravatar.cc/150?img=32" class="w-9 h-9 rounded-full object-cover">
+                                                <div>
+                                                    <p class="font-medium text-gray-900">Beatrice Atieno</p>
+                                                    <p class="text-xs text-gray-500">Nairobi, Kilimani</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-4 text-gray-600">Nanny & Housekeeper</td>
+                                        <td class="px-5 py-4 text-gray-500">2 hrs ago</td>
+                                        <td class="px-5 py-4">
+                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-700">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                                                Pending Review
+                                            </span>
+                                        </td>
+                                        <td class="px-5 py-4 text-right">
+                                            <button class="text-gray-500 hover:text-brand-700 p-1"><i class="ph-bold ph-eye"></i></button>
+                                            <button class="text-gray-500 hover:text-green-600 p-1"><i class="ph-bold ph-check"></i></button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Row 2 -->
+                                    <tr class="hover:bg-gray-50 transition-colors">
+                                        <td class="px-5 py-4">
+                                            <div class="flex items-center gap-3">
+                                                <img src="https://i.pravatar.cc/150?img=44" class="w-9 h-9 rounded-full object-cover">
+                                                <div>
+                                                    <p class="font-medium text-gray-900">Sarah Wanjiku</p>
+                                                    <p class="text-xs text-gray-500">Nairobi, Westlands</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-4 text-gray-600">Elderly Care</td>
+                                        <td class="px-5 py-4 text-gray-500">5 hrs ago</td>
+                                        <td class="px-5 py-4">
+                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-orange-100 text-orange-700">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-orange-500"></span>
+                                                Pending Review
+                                            </span>
+                                        </td>
+                                        <td class="px-5 py-4 text-right">
+                                            <button class="text-gray-500 hover:text-brand-700 p-1"><i class="ph-bold ph-eye"></i></button>
+                                            <button class="text-gray-500 hover:text-green-600 p-1"><i class="ph-bold ph-check"></i></button>
+                                        </td>
+                                    </tr>
+
+                                    <!-- Row 3 -->
+                                    <tr class="hover:bg-gray-50 transition-colors">
+                                        <td class="px-5 py-4">
+                                            <div class="flex items-center gap-3">
+                                                <img src="https://i.pravatar.cc/150?img=12" class="w-9 h-9 rounded-full object-cover">
+                                                <div>
+                                                    <p class="font-medium text-gray-900">John Kamau</p>
+                                                    <p class="text-xs text-gray-500">Kiambu Road</p>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="px-5 py-4 text-gray-600">Driver / Gardiner</td>
+                                        <td class="px-5 py-4 text-gray-500">Yesterday</td>
+                                        <td class="px-5 py-4">
+                                            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium bg-red-100 text-red-700">
+                                                <span class="w-1.5 h-1.5 rounded-full bg-red-500"></span>
+                                                Docs Missing
+                                            </span>
+                                        </td>
+                                        <td class="px-5 py-4 text-right">
+                                            <button class="text-gray-500 hover:text-brand-700 p-1"><i class="ph-bold ph-eye"></i></button>
+                                            <button class="text-gray-500 hover:text-gray-800 p-1"><i class="ph-bold ph-envelope-simple"></i></button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <div class="p-4 border-t border-gray-100 bg-gray-50 rounded-b-xl flex justify-center">
+                            <button class="text-xs text-gray-500 font-medium hover:text-gray-800">View all 12 pending applications</button>
+                        </div>
+                    </div>
+
+                    <!-- Job Listings Table -->
+                    <div class="bg-white rounded-xl border border-gray-200 shadow-sm">
+                        <div class="p-5 border-b border-gray-100 flex items-center justify-between">
+                            <h2 class="font-semibold text-gray-800">Recent Job Posts</h2>
+                        </div>
+                        <div class="p-0">
+                            <div class="flex items-center justify-between p-4 border-b border-gray-50 hover:bg-gray-50 transition">
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center flex-shrink-0">
+                                        <i class="ph-bold ph-baby"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-sm font-medium text-gray-900">Live-in Nanny Needed</h3>
+                                        <p class="text-xs text-gray-500">Posted by The Njoroge Family • 10 applicants</p>
+                                    </div>
+                                </div>
+                                <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-md font-medium">Active</span>
+                            </div>
+                            <div class="flex items-center justify-between p-4 border-b border-gray-50 hover:bg-gray-50 transition">
+                                <div class="flex gap-4">
+                                    <div class="w-10 h-10 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center flex-shrink-0">
+                                        <i class="ph-bold ph-broom"></i>
+                                    </div>
+                                    <div>
+                                        <h3 class="text-sm font-medium text-gray-900">Weekend Housekeeper</h3>
+                                        <p class="text-xs text-gray-500">Posted by Sarah M. • 3 applicants</p>
+                                    </div>
+                                </div>
+                                <span class="px-2 py-1 bg-green-100 text-green-700 text-xs rounded-md font-medium">Active</span>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Column: Activity & Quick Actions -->
+                <div class="space-y-8">
+                    
+                    <!-- Quick Actions -->
+                    <div class="bg-brand-900 rounded-xl p-6 text-white shadow-lg relative overflow-hidden group">
+                        <!-- Decorative background element -->
+                        <div class="absolute -right-6 -top-6 w-32 h-32 bg-brand-700 rounded-full opacity-20 blur-2xl group-hover:scale-110 transition-transform"></div>
+                        
+                        <h3 class="font-semibold text-lg mb-4 relative z-10">Quick Actions</h3>
+                        <div class="space-y-3 relative z-10">
+                            <button class="w-full bg-white/10 hover:bg-white/20 border border-white/10 transition-colors p-3 rounded-lg text-left text-sm font-medium flex items-center gap-3">
+                                <i class="ph-bold ph-user-plus text-brand-300"></i>
+                                Invite Administrator
+                            </button>
+                            <button class="w-full bg-white/10 hover:bg-white/20 border border-white/10 transition-colors p-3 rounded-lg text-left text-sm font-medium flex items-center gap-3">
+                                <i class="ph-bold ph-export text-brand-300"></i>
+                                Export Monthly Report
+                            </button>
+                            <button class="w-full bg-white/10 hover:bg-white/20 border border-white/10 transition-colors p-3 rounded-lg text-left text-sm font-medium flex items-center gap-3">
+                                <i class="ph-bold ph-gear text-brand-300"></i>
+                                Verification Settings
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Recent Activity Feed -->
+                    <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-5">
+                        <h3 class="font-semibold text-gray-800 mb-4">Platform Activity</h3>
+                        <div class="relative pl-4 border-l border-gray-200 space-y-6">
+                            
+                            <!-- Item -->
+                            <div class="relative">
+                                <span class="absolute -left-[21px] top-1 h-2.5 w-2.5 rounded-full bg-gray-300 border-2 border-white"></span>
+                                <p class="text-xs text-gray-500 mb-0.5">10 mins ago</p>
+                                <p class="text-sm text-gray-800">
+                                    <span class="font-medium">Kevin (Admin)</span> approved <span class="font-medium text-brand-700">Mary K's</span> profile.
+                                </p>
+                            </div>
+
+                            <!-- Item -->
+                            <div class="relative">
+                                <span class="absolute -left-[21px] top-1 h-2.5 w-2.5 rounded-full bg-green-500 border-2 border-white"></span>
+                                <p class="text-xs text-gray-500 mb-0.5">34 mins ago</p>
+                                <p class="text-sm text-gray-800">
+                                    New subscription: <span class="font-medium">Premium Plan</span> purchased by The Omondi Family.
+                                </p>
+                            </div>
+
+                            <!-- Item -->
+                            <div class="relative">
+                                <span class="absolute -left-[21px] top-1 h-2.5 w-2.5 rounded-full bg-gray-300 border-2 border-white"></span>
+                                <p class="text-xs text-gray-500 mb-0.5">1 hr ago</p>
+                                <p class="text-sm text-gray-800">
+                                    <span class="font-medium">System</span> flagged a job post for suspicious content.
+                                </p>
+                            </div>
+
+                            <!-- Item -->
+                            <div class="relative">
+                                <span class="absolute -left-[21px] top-1 h-2.5 w-2.5 rounded-full bg-blue-500 border-2 border-white"></span>
+                                <p class="text-xs text-gray-500 mb-0.5">2 hrs ago</p>
+                                <p class="text-sm text-gray-800">
+                                    New Job Post: "House help for elderly couple" in Karen.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        function toggleSidebar() {
+            // Toggle the translation class
+            sidebar.classList.toggle('-translate-x-full');
+            
+            // Toggle overlay visibility
+            overlay.classList.toggle('opacity-0');
+            overlay.classList.toggle('pointer-events-none');
+        }
+    </script>
+</body>
+</html>
