@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mjakazi Connect | Caregiver Portal</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            900: '#022c22', 
+                            800: '#064e3b', 
+                            700: '#047857',
+                            600: '#059669',
+                            500: '#10b981', 
+                            100: '#d1fae5',
+                            50: '#ecfdf5',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased h-screen flex overflow-hidden relative">
+
+    <!-- Mobile Overlay -->
+    <div id="sidebar-overlay" onclick="toggleSidebar()" class="fixed inset-0 bg-gray-900 bg-opacity-50 z-20 opacity-0 pointer-events-none transition-opacity duration-300 lg:hidden"></div>
+
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-30 w-64 bg-white border-r border-gray-200 transform -translate-x-full transition-transform duration-300 ease-in-out lg:translate-x-0 lg:static lg:inset-auto flex flex-col flex-shrink-0">
+        <!-- Logo Area -->
+        <div class="h-16 flex items-center px-6 border-b border-gray-100 justify-between lg:justify-start">
+            <div class="flex items-center gap-2 font-bold text-xl tracking-tight text-brand-900">
+                <i class="ph-fill ph-house-line text-brand-600 text-2xl"></i>
+                <span>Mjakazi</span>
+            </div>
+            <button onclick="toggleSidebar()" class="lg:hidden text-gray-400 hover:text-gray-600">
+                <i class="ph ph-x text-xl"></i>
+            </button>
+        </div>
+
+        <!-- Navigation -->
+        <nav class="flex-1 overflow-y-auto py-6 px-3 space-y-1">
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 bg-brand-50 text-brand-700 rounded-lg font-medium group">
+                <i class="ph-fill ph-squares-four text-xl"></i>
+                Dashboard
+            </a>
+            
+            <div class="pt-4 pb-2 px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Work</div>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-colors group">
+                <i class="ph ph-briefcase text-xl text-gray-400 group-hover:text-gray-600"></i>
+                Browse Jobs
+                <span class="ml-auto bg-brand-100 text-brand-700 text-xs py-0.5 px-2 rounded-full font-semibold">New</span>
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-colors group">
+                <i class="ph ph-paper-plane-tilt text-xl text-gray-400 group-hover:text-gray-600"></i>
+                My Applications
+            </a>
+
+            <div class="pt-4 pb-2 px-3 text-xs font-semibold text-gray-400 uppercase tracking-wider">Profile</div>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-colors group">
+                <i class="ph ph-user-circle text-xl text-gray-400 group-hover:text-gray-600"></i>
+                Edit Profile
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-colors group">
+                <i class="ph ph-file-text text-xl text-gray-400 group-hover:text-gray-600"></i>
+                My Documents
+            </a>
+            <a href="#" class="flex items-center gap-3 px-3 py-2.5 text-gray-600 hover:bg-gray-50 hover:text-gray-900 rounded-lg font-medium transition-colors group">
+                <i class="ph ph-gear text-xl text-gray-400 group-hover:text-gray-600"></i>
+                Settings
+            </a>
+        </nav>
+
+        <!-- Profile Widget -->
+        <div class="p-4 border-t border-gray-100">
+            <div class="flex items-center gap-3">
+                <img src="https://i.pravatar.cc/150?img=28" alt="User" class="w-9 h-9 rounded-full border border-gray-200 object-cover">
+                <div class="flex-1 min-w-0">
+                    <p class="text-sm font-medium text-gray-900 truncate">Mercy K.</p>
+                    <p class="text-xs text-gray-500 truncate">Nanny & Househelp</p>
+                </div>
+                <button class="text-gray-400 hover:text-gray-600"><i class="ph ph-sign-out text-xl"></i></button>
+            </div>
+        </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 flex flex-col overflow-hidden bg-gray-50 transition-all duration-300">
+        
+        <!-- Header -->
+        <header class="h-16 bg-white border-b border-gray-200 flex items-center justify-between px-4 lg:px-8">
+            <div class="flex items-center gap-3">
+                <button onclick="toggleSidebar()" class="lg:hidden p-2 text-gray-500 hover:text-gray-700 rounded-md">
+                    <i class="ph ph-list text-2xl"></i>
+                </button>
+                <h1 class="text-lg font-semibold text-gray-800">My Dashboard</h1>
+            </div>
+            
+            <div class="flex items-center gap-4">
+                <div class="hidden md:flex items-center gap-2">
+                    <span class="text-sm text-gray-500">Availability:</span>
+                    <label class="relative inline-flex items-center cursor-pointer">
+                        <input type="checkbox" value="" class="sr-only peer" checked>
+                        <div class="w-9 h-5 bg-gray-200 peer-focus:outline-none peer-focus:ring-4 peer-focus:ring-brand-300 rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-4 after:w-4 after:transition-all peer-checked:bg-brand-600"></div>
+                        <span class="ml-2 text-sm font-medium text-gray-900">Active</span>
+                    </label>
+                </div>
+                <button class="relative p-2 text-gray-500 hover:bg-gray-100 rounded-full">
+                    <i class="ph ph-bell text-xl"></i>
+                    <span class="absolute top-1.5 right-1.5 w-2 h-2 bg-red-500 rounded-full border border-white"></span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Content Body -->
+        <div class="flex-1 overflow-y-auto p-4 lg:p-8 space-y-6">
+            
+            <!-- Mobile Availability Toggle (Visible only on small screens) -->
+            <div class="md:hidden flex items-center justify-between bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                <span class="text-sm font-medium text-gray-900">Are you looking for work?</span>
+                <label class="relative inline-flex items-center cursor-pointer">
+                    <input type="checkbox" value="" class="sr-only peer" checked>
+                    <div class="w-11 h-6 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-brand-600"></div>
+                </label>
+            </div>
+
+            <!-- Verification Status Banner -->
+            <!-- 
+                Logic: If verified, show green. If pending, show orange. If rejected, show red.
+                Shown here: Verified state.
+            -->
+            <div class="bg-green-50 border border-green-200 rounded-xl p-4 flex items-start gap-3">
+                <i class="ph-fill ph-check-circle text-green-600 text-xl mt-0.5"></i>
+                <div>
+                    <h3 class="text-sm font-bold text-green-800">Your profile is Verified</h3>
+                    <p class="text-xs text-green-700 mt-1">Great news! Families can now see your profile and contact details. Keep your availability updated to get more inquiries.</p>
+                </div>
+            </div>
+            
+            <!-- Stats -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs text-gray-500 font-medium">Profile Views</p>
+                    <p class="text-2xl font-bold text-gray-900 mt-1">24</p>
+                    <span class="text-[10px] text-green-600 flex items-center gap-0.5"><i class="ph-bold ph-trend-up"></i> +5 this week</span>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs text-gray-500 font-medium">Applications</p>
+                    <p class="text-2xl font-bold text-gray-900 mt-1">8</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs text-gray-500 font-medium">Shortlisted</p>
+                    <p class="text-2xl font-bold text-gray-900 mt-1">2</p>
+                </div>
+                <div class="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs text-gray-500 font-medium">Profile Score</p>
+                    <p class="text-2xl font-bold text-brand-600 mt-1">95%</p>
+                </div>
+            </div>
+
+            <!-- Two Column Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                
+                <!-- Left: Jobs Feed -->
+                <div class="lg:col-span-2 space-y-6">
+                    <div class="flex items-center justify-between">
+                        <h2 class="text-lg font-bold text-gray-900">Recommended Jobs</h2>
+                        <a href="#" class="text-sm text-brand-600 hover:text-brand-800 font-medium">View All</a>
+                    </div>
+
+                    <!-- Job Card 1 -->
+                    <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-5 hover:border-brand-300 transition-colors">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <span class="px-2 py-1 bg-blue-50 text-blue-700 text-[10px] uppercase font-bold rounded">Full Time</span>
+                                <h3 class="text-base font-bold text-gray-900 mt-1">House Manager Needed</h3>
+                                <p class="text-sm text-gray-500">Nairobi, Kileleshwa</p>
+                            </div>
+                            <span class="text-xs font-medium text-gray-400">2h ago</span>
+                        </div>
+                        <div class="flex gap-4 my-3 text-xs text-gray-600">
+                            <span class="flex items-center gap-1"><i class="ph ph-money"></i> 18k - 22k</span>
+                            <span class="flex items-center gap-1"><i class="ph ph-clock"></i> Mon - Sat</span>
+                        </div>
+                        <p class="text-sm text-gray-600 line-clamp-2 mb-4">
+                            Looking for a mature and experienced house manager for a family of 4. Must be good with cooking and general cleaning. Reference required...
+                        </p>
+                        <div class="flex gap-3">
+                            <button class="flex-1 bg-brand-600 text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-700 transition-colors">Apply Now</button>
+                            <button class="px-3 border border-gray-200 rounded-lg hover:bg-gray-50 text-gray-500"><i class="ph ph-bookmark-simple text-lg"></i></button>
+                        </div>
+                    </div>
+
+                    <!-- Job Card 2 -->
+                    <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-5 hover:border-brand-300 transition-colors">
+                        <div class="flex justify-between items-start mb-3">
+                            <div>
+                                <span class="px-2 py-1 bg-purple-50 text-purple-700 text-[10px] uppercase font-bold rounded">Live-In</span>
+                                <h3 class="text-base font-bold text-gray-900 mt-1">Nanny for Newborn</h3>
+                                <p class="text-sm text-gray-500">Nairobi, Karen</p>
+                            </div>
+                            <span class="text-xs font-medium text-gray-400">5h ago</span>
+                        </div>
+                        <div class="flex gap-4 my-3 text-xs text-gray-600">
+                            <span class="flex items-center gap-1"><i class="ph ph-money"></i> 25k - 30k</span>
+                            <span class="flex items-center gap-1"><i class="ph ph-clock"></i> Flexible</span>
+                        </div>
+                        <p class="text-sm text-gray-600 line-clamp-2 mb-4">
+                            We are looking for a caring nanny experienced with infants (0-6 months). Must have First Aid training and valid Certificate of Good Conduct.
+                        </p>
+                        <div class="flex gap-3">
+                            <button class="flex-1 bg-brand-600 text-white py-2 rounded-lg text-sm font-medium hover:bg-brand-700 transition-colors">Apply Now</button>
+                            <button class="px-3 border border-gray-200 rounded-lg hover:bg-gray-50 text-gray-500"><i class="ph ph-bookmark-simple text-lg"></i></button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right: Profile Preview & Tips -->
+                <div class="space-y-6">
+                    
+                    <!-- Mini Profile Card -->
+                    <div class="bg-white rounded-xl border border-gray-200 shadow-sm p-5 text-center">
+                        <div class="relative inline-block">
+                            <img src="https://i.pravatar.cc/150?img=28" class="w-20 h-20 rounded-full mx-auto object-cover border-4 border-white shadow-sm">
+                            <div class="absolute bottom-0 right-0 bg-green-500 w-5 h-5 rounded-full border-2 border-white"></div>
+                        </div>
+                        <h3 class="font-bold text-gray-900 mt-3">Mercy K.</h3>
+                        <p class="text-xs text-gray-500">Nanny & Househelp</p>
+                        
+                        <div class="flex justify-center gap-1 my-2">
+                             <i class="ph-fill ph-star text-yellow-400"></i>
+                             <i class="ph-fill ph-star text-yellow-400"></i>
+                             <i class="ph-fill ph-star text-yellow-400"></i>
+                             <i class="ph-fill ph-star text-yellow-400"></i>
+                             <i class="ph-fill ph-star text-yellow-400"></i>
+                        </div>
+
+                        <button class="w-full mt-2 py-2 text-sm font-medium text-brand-700 bg-brand-50 rounded-lg hover:bg-brand-100 transition-colors">
+                            Preview Public Profile
+                        </button>
+                    </div>
+
+                    <!-- Improvement Tips -->
+                    <div class="bg-blue-50 border border-blue-100 rounded-xl p-5">
+                        <h4 class="font-bold text-blue-900 text-sm mb-3">Improve your chances</h4>
+                        <ul class="space-y-3">
+                            <li class="flex gap-3 items-start">
+                                <div class="bg-white p-1 rounded-md text-blue-600 shadow-sm">
+                                    <i class="ph-bold ph-video-camera"></i>
+                                </div>
+                                <p class="text-xs text-blue-800 leading-tight pt-1">Add a <span class="font-semibold">Video Introduction</span> to get 3x more profile views.</p>
+                            </li>
+                            <li class="flex gap-3 items-start">
+                                <div class="bg-white p-1 rounded-md text-blue-600 shadow-sm">
+                                    <i class="ph-bold ph-certificate"></i>
+                                </div>
+                                <p class="text-xs text-blue-800 leading-tight pt-1">Upload your <span class="font-semibold">First Aid Certificate</span> to apply for higher paying jobs.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        const sidebar = document.getElementById('sidebar');
+        const overlay = document.getElementById('sidebar-overlay');
+
+        function toggleSidebar() {
+            // Toggle the translation class
+            sidebar.classList.toggle('-translate-x-full');
+            
+            // Toggle overlay visibility
+            overlay.classList.toggle('opacity-0');
+            overlay.classList.toggle('pointer-events-none');
+        }
+    </script>
+</body>
+</html>

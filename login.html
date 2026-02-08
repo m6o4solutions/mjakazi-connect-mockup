@@ -11,12 +11,12 @@
 		/>
 		<link href="/src/style.css" rel="stylesheet" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Mjakazi Connect — Terms of Service</title>
+		<title>Mjakazi Connect — Log In</title>
 		<script src="https://unpkg.com/lucide@latest" defer></script>
 	</head>
 	<body>
 		<div class="min-h-dvh bg-zinc-50 text-zinc-950">
-			<!-- Header (same structure as blogs page/home nav) -->
+			<!-- Header (common) -->
 			<header>
 				<nav class="fixed z-50 w-full border-b border-gray-100 bg-white/80 backdrop-blur-md">
 					<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -108,90 +108,124 @@
 			</header>
 
 			<main class="pt-28">
-				<!-- Page header (modeled after blogs page) -->
+				<!-- Page header (like blogs page) -->
 				<section class="bg-white py-12">
 					<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-						<h1 class="font-display text-3xl font-bold text-gray-900 md:text-4xl">
-							Terms of Service
-						</h1>
+						<h1 class="font-display text-3xl font-bold text-gray-900 md:text-4xl">Log In</h1>
 						<p class="mt-3 text-gray-600">
-							Please read these terms carefully. By using Mjakazi Connect, you agree to the
-							conditions below.
+							Choose how you want to access Mjakazi Connect. Select your role below to continue.
 						</p>
 					</div>
 				</section>
 
-				<!-- Terms content -->
+				<!-- Choices grid 3 x 1 -->
 				<section class="border-t border-gray-100 bg-stone-50 py-16">
 					<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-						<article class="prose prose-zinc max-w-none">
-							<h2 class="font-display text-2xl font-bold text-gray-900">1. Acceptance of Terms</h2>
-							<p class="mt-3 text-gray-700">
-								By accessing or using Mjakazi Connect (the “Service”), you acknowledge that you have
-								read, understood, and agree to be bound by these Terms of Service and our Privacy
-								Policy.
-							</p>
+						<div class="grid gap-8 md:grid-cols-3">
+							<!-- Admin -->
+							<div
+								class="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white transition-all duration-300 hover:border-emerald-100 hover:shadow-lg"
+							>
+								<div class="relative aspect-16/10 overflow-hidden bg-gray-100">
+									<div
+										class="flex h-full w-full items-center justify-center bg-linear-to-br from-emerald-50 to-teal-50"
+									>
+										<i
+											data-lucide="image"
+											class="h-12 w-12 text-gray-300 transition-transform duration-500 group-hover:scale-110"
+										></i>
+									</div>
+								</div>
+								<div class="flex flex-1 flex-col p-6">
+									<h3 class="font-display mb-2 text-xl font-bold text-gray-900">
+										Log In as Administrator
+									</h3>
+									<p class="mb-6 text-sm leading-relaxed text-gray-600">
+										Manage platform settings, oversee user activity, and handle verifications.
+									</p>
+									<div class="mt-auto">
+										<a
+											href="/mock-admin-dashboard.html"
+											class="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-5 py-2 text-sm font-medium text-white shadow-lg shadow-emerald-600/20 transition-all duration-200 hover:bg-emerald-700"
+										>
+											<i data-lucide="log-in" class="mr-2 h-4 w-4"></i>
+											Log In
+										</a>
+									</div>
+								</div>
+							</div>
 
-							<h2 class="font-display mt-10 text-2xl font-bold text-gray-900">
-								2. Service Description
-							</h2>
-							<p class="mt-3 text-gray-700">
-								Mjakazi Connect provides a platform for families to discover, evaluate, and connect
-								with vetted domestic professionals. We do not employ caregivers directly;
-								engagements are between families and caregivers.
-							</p>
+							<!-- Family Member -->
+							<div
+								class="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white transition-all duration-300 hover:border-emerald-100 hover:shadow-lg"
+							>
+								<div class="relative aspect-16/10 overflow-hidden bg-gray-100">
+									<div
+										class="flex h-full w-full items-center justify-center bg-linear-to-br from-emerald-50 to-teal-50"
+									>
+										<i
+											data-lucide="image"
+											class="h-12 w-12 text-gray-300 transition-transform duration-500 group-hover:scale-110"
+										></i>
+									</div>
+								</div>
+								<div class="flex flex-1 flex-col p-6">
+									<h3 class="font-display mb-2 text-xl font-bold text-gray-900">
+										Log In as Family Member
+									</h3>
+									<p class="mb-6 text-sm leading-relaxed text-gray-600">
+										Access your dashboard to manage subscriptions, shortlist, and messages.
+									</p>
+									<div class="mt-auto">
+										<a
+											href="/mock-family-dashboard.html"
+											class="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-5 py-2 text-sm font-medium text-white shadow-lg shadow-emerald-600/20 transition-all duration-200 hover:bg-emerald-700"
+										>
+											<i data-lucide="log-in" class="mr-2 h-4 w-4"></i>
+											Log In
+										</a>
+									</div>
+								</div>
+							</div>
 
-							<h2 class="font-display mt-10 text-2xl font-bold text-gray-900">
-								3. User Responsibilities
-							</h2>
-							<ul class="mt-3 list-disc space-y-2 pl-6 text-gray-700">
-								<li>Provide accurate information when creating accounts or profiles.</li>
-								<li>Comply with applicable laws and regulations when engaging caregivers.</li>
-								<li>Use the Service only for lawful and intended purposes.</li>
-							</ul>
-
-							<h2 class="font-display mt-10 text-2xl font-bold text-gray-900">
-								4. Payments and Fees
-							</h2>
-							<p class="mt-3 text-gray-700">
-								Where applicable, subscription or listing fees are disclosed prior to purchase. All
-								payments are non-refundable except as required by law or expressly stated otherwise.
-							</p>
-
-							<h2 class="font-display mt-10 text-2xl font-bold text-gray-900">5. Disclaimers</h2>
-							<p class="mt-3 text-gray-700">
-								The Service is provided “as is” without warranties of any kind. While we employ
-								screening measures, we do not guarantee outcomes, suitability, or continuous
-								availability of the Service.
-							</p>
-
-							<h2 class="font-display mt-10 text-2xl font-bold text-gray-900">
-								6. Limitation of Liability
-							</h2>
-							<p class="mt-3 text-gray-700">
-								To the maximum extent permitted by law, Mjakazi Connect and its affiliates are not
-								liable for indirect, incidental, special, or consequential damages arising out of or
-								related to your use of the Service.
-							</p>
-
-							<h2 class="font-display mt-10 text-2xl font-bold text-gray-900">
-								7. Changes to these Terms
-							</h2>
-							<p class="mt-3 text-gray-700">
-								We may update these Terms from time to time. Material changes will be notified via
-								the Service. Your continued use constitutes acceptance of the updated Terms.
-							</p>
-
-							<h2 class="font-display mt-10 text-2xl font-bold text-gray-900">8. Contact</h2>
-							<p class="mt-3 text-gray-700">
-								Questions about these Terms can be sent to support@mjakaziconnect.com.
-							</p>
-						</article>
+							<!-- Domestic Contractor -->
+							<div
+								class="group flex flex-col overflow-hidden rounded-2xl border border-gray-100 bg-white transition-all duration-300 hover:border-emerald-100 hover:shadow-lg"
+							>
+								<div class="relative aspect-16/10 overflow-hidden bg-gray-100">
+									<div
+										class="flex h-full w-full items-center justify-center bg-linear-to-br from-emerald-50 to-teal-50"
+									>
+										<i
+											data-lucide="image"
+											class="h-12 w-12 text-gray-300 transition-transform duration-500 group-hover:scale-110"
+										></i>
+									</div>
+								</div>
+								<div class="flex flex-1 flex-col p-6">
+									<h3 class="font-display mb-2 text-xl font-bold text-gray-900">
+										Log In as Domestic Contractor
+									</h3>
+									<p class="mb-6 text-sm leading-relaxed text-gray-600">
+										Update your profile, track applications, and respond to family messages.
+									</p>
+									<div class="mt-auto">
+										<a
+											href="/mock-contractor-dashboard.html"
+											class="inline-flex items-center justify-center rounded-lg bg-emerald-600 px-5 py-2 text-sm font-medium text-white shadow-lg shadow-emerald-600/20 transition-all duration-200 hover:bg-emerald-700"
+										>
+											<i data-lucide="log-in" class="mr-2 h-4 w-4"></i>
+											Log In
+										</a>
+									</div>
+								</div>
+							</div>
+						</div>
 					</div>
 				</section>
 			</main>
 
-			<!-- Footer -->
+			<!-- Footer (common) -->
 			<footer class="border-t border-gray-100 bg-white pt-20 pb-10">
 				<div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
 					<div class="mb-16 grid grid-cols-2 gap-8 md:grid-cols-4 lg:grid-cols-5">
@@ -225,7 +259,7 @@
 									<span class="sr-only">Twitter</span>
 									<svg class="h-4 w-4 text-gray-500" fill="currentColor" viewBox="0 0 24 24">
 										<path
-											d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v .60a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
+											d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.60a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"
 										/>
 									</svg>
 								</div>
@@ -281,28 +315,32 @@
 			</footer>
 		</div>
 
+		<!-- Initialize lucide icons and simple mobile menu toggle -->
 		<script>
-			// Basic mobile menu toggle for this static page
-			document.addEventListener("DOMContentLoaded", () => {
-				const toggle = document.getElementById("mobile-menu-toggle");
-				const menu = document.getElementById("mobile-menu");
-				const menuIcon = document.getElementById("menu-icon");
-				const closeIcon = document.getElementById("close-icon");
-				if (toggle && menu && menuIcon && closeIcon) {
-					toggle.addEventListener("click", () => {
-						const isOpen = !menu.classList.contains("hidden");
-						menu.classList.toggle("hidden", isOpen);
-						menuIcon.classList.toggle("hidden", !isOpen);
-						closeIcon.classList.toggle("hidden", isOpen);
-						toggle.setAttribute("aria-expanded", String(!isOpen));
+			window.addEventListener("DOMContentLoaded", function () {
+				if (window.lucide && typeof window.lucide.createIcons === "function") {
+					window.lucide.createIcons();
+				}
+				var toggle = document.getElementById("mobile-menu-toggle");
+				var menu = document.getElementById("mobile-menu");
+				var menuIcon = document.getElementById("menu-icon");
+				var closeIcon = document.getElementById("close-icon");
+				if (toggle && menu) {
+					toggle.addEventListener("click", function () {
+						var isHidden = menu.classList.contains("hidden");
+						if (isHidden) {
+							menu.classList.remove("hidden");
+							toggle.setAttribute("aria-expanded", "true");
+							menuIcon.classList.add("hidden");
+							closeIcon.classList.remove("hidden");
+						} else {
+							menu.classList.add("hidden");
+							toggle.setAttribute("aria-expanded", "false");
+							menuIcon.classList.remove("hidden");
+							closeIcon.classList.add("hidden");
+						}
 					});
 				}
-
-				// Initialize Lucide icons to render <i data-lucide="..."> placeholders
-				try {
-					// @ts-ignore - lucide provided by CDN script in <head>
-					window.lucide?.createIcons?.();
-				} catch {}
 			});
 		</script>
 	</body>

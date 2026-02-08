@@ -11,7 +11,13 @@ export default defineConfig({
 			input: {
 				blogs: resolve(__dirname, "blogs.html"),
 				directory: resolve(__dirname, "directory.html"),
+				login: resolve(__dirname, "login.html"),
 				main: resolve(__dirname, "index.html"),
+				"mock-admin-dashboard": resolve(__dirname, "mock-admin-dashboard.html"),
+				"mock-contractor-dashboard": resolve(__dirname, "mock-contractor-dashboard.html"),
+				"mock-contractor-registration": resolve(__dirname, "mock-contractor-registration.html"),
+				"mock-family-dashboard": resolve(__dirname, "mock-family-dashboard.html"),
+				"mock-family-registration": resolve(__dirname, "mock-family-registration.html"),
 				"privacy-policy": resolve(__dirname, "privacy-policy.html"),
 				registration: resolve(__dirname, "registration.html"),
 				"terms-of-service": resolve(__dirname, "terms-of-service.html"),
