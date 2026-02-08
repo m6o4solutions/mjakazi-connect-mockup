@@ -61,8 +61,8 @@ Refer to deployment documentation for production setup on Contabo VPS infrastruc
 
 This platform serves:
 
-- **Families**: Search caregivers, unlock contacts, post job opportunities
-- **Caregivers**: Create profiles, showcase skills, receive job notifications
+- **Families**: Search contractors, unlock contacts, post job opportunities
+- **Contractors**: Create profiles, showcase skills, receive job notifications
 - **Administrators**: Moderate profiles, manage subscriptions, oversee platform quality
 
 ---

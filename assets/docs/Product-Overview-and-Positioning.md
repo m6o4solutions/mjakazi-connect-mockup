@@ -12,9 +12,9 @@ Mjakazi Connect is a digital platform that connects families with domestic careg
 
 In simple terms:
 
-* Families discover and evaluate caregivers.  
-* Caregivers present their skills and availability.  
-* The platform controls access, quality, and trust.
+- Families discover and evaluate contractors.
+- Contractors present their skills and availability.
+- The platform controls access, quality, and trust.
 
 ---
 
@@ -22,15 +22,15 @@ In simple terms:
 
 **Primary users**
 
-* Families and households looking for caregivers and domestic staff.
+- Families and households looking for caregivers and domestic staff.
 
 **Secondary users**
 
-* Caregivers and domestic workers seeking visibility and job opportunities.
+- Contractors and domestic workers seeking visibility and job opportunities.
 
 **Internal users**
 
-* Platform administrators responsible for moderation, approvals, and quality control.
+- Platform administrators responsible for moderation, approvals, and quality control.
 
 ---
 
@@ -38,7 +38,7 @@ In simple terms:
 
 **Primary success metric**
 
-* The number of paying families who actively unlock caregiver contact details or post jobs.
+- The number of paying families who actively unlock caregiver contact details or post jobs.
 
 This measures real value creation by focusing on committed usage rather than surface-level engagement.
 
@@ -50,13 +50,13 @@ This measures real value creation by focusing on committed usage rather than sur
 
 This vibe supports:
 
-* Trust and credibility  
-* Clear rules and boundaries  
-* Predictable, structured user experiences
+- Trust and credibility
+- Clear rules and boundaries
+- Predictable, structured user experiences
 
 **Secondary influence**
 
-* Corporate / Enterprise, to reinforce seriousness and authority.
+- Corporate / Enterprise, to reinforce seriousness and authority.
 
 ---
 
